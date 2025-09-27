@@ -299,3 +299,68 @@ Author: [Your Name]
 You've chosen the **professional WordPress development approach**. This child theme strategy is exactly how agencies and pro developers work. It ensures your custom Wasla brand stays intact while keeping the site secure, fast, and maintainable.
 
 **Next action**: Extract header & footer components to create standardized template files that preserve your beautiful design!
+
+---
+
+# WASLA WEBSITE ISSUES DOCUMENTATION
+
+## **Homepage (Welcome Page)**
+1. **Mobile Layout**: Right small white line visible in mobile view (padding issue) - ❌ **PENDING**
+2. **Mobile Menu - Functionality**: Menu does not close when clicking outside of it - ✅ **RESOLVED**
+3. **Mobile Menu - Styling**: Light theme not working properly, strange colors instead of white - ✅ **RESOLVED**
+4. **Card Alignment**: "Read more" buttons not properly aligned across different cards - ❌ **PENDING**
+
+## **Contact Page**
+1. **Form Functionality**: Send form is not working - ❌ **PENDING**
+2. **Mobile Layout**: Same right small white line issue as homepage - ❌ **PENDING**
+3. **Mobile Menu**: Same two menu issues as homepage - 🔄 **PARTIALLY RESOLVED** (styling fixed, functionality pending)
+4. **Dynamic Content**: Contact methods should be editable through dynamic fields - ❌ **PENDING**
+5. **Dynamic Content**: FAQ section should be editable through dynamic fields - ❌ **PENDING**
+
+## **Blog Page**
+1. **Categories**: Categories are not clickable - ❌ **PENDING**
+2. **Mobile Layout**: Assumed same white line and menu issues as other pages - 🔄 **PARTIALLY RESOLVED** (menu styling fixed)
+
+## **Article Page**
+1. **Layout Instability**: Tags and menus suddenly change position on both mobile and desktop - ❌ **PENDING**
+2. **View Counter**: Not displaying real view counts, showing incorrect data - ❌ **PENDING**
+
+## **Category Page**
+1. **Empty State**: Too much white space when no articles found in category - ❌ **PENDING**
+2. **Header Visibility**: Header color issues making it difficult to see - ❌ **PENDING**
+3. **Layout**: Excessive spacing in no-content state - ❌ **PENDING**
+
+## **General Issues (Cross-Platform)**
+- **Mobile menu positioning and functionality problems** - 🔄 **PARTIALLY RESOLVED** (styling fixed, positioning pending)
+- **White line spacing issue on right side in mobile view** - ❌ **PENDING**
+- **Header visibility and color consistency problems** - ❌ **PENDING**
+
+---
+
+## **RESOLVED ISSUES**
+
+### ✅ **Mobile Menu White Background Issue**
+**Problem**: Mobile menu displayed with blurry/transparent white background when header was scrolled, making text difficult to read and menu appear unprofessional.
+
+**Solution**: 
+- Removed backdrop-filter effects from scrolled state mobile menu
+- Added CSS isolation properties to prevent rendering conflicts
+- Preserved page background blur effect for normal dark menu state
+- Maintained all existing animations and functionality
+
+**Technical Details**:
+- Modified `.wasla-header.scrolled .nav-menu` CSS rules
+- Disabled problematic `::before` pseudo-element for white menu state
+- Added `isolation: isolate` and explicit background properties
+- Preserved backdrop-filter for page content behind dark menu
+
+**Status**: ✅ **COMPLETED** - Mobile menu now displays crisp white background when scrolled while maintaining proper blur effects for page content.
+
+---
+
+## **PRIORITY NEXT STEPS**
+1. Mobile layout white line spacing issue (affects all pages)
+2. Mobile menu outside-click functionality 
+3. Contact form functionality
+4. Blog categories clickability
+5. Article page layout stability
