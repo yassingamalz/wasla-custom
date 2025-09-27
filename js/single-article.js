@@ -380,42 +380,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ===== STICKY SIDEBAR ENHANCEMENT =====
-    function enhanceStickyElements() {
-        const sidebar = document.querySelector('.article-sidebar');
-        const articleMain = document.querySelector('.article-main');
-        
-        if (!sidebar || !articleMain) return;
-        
-        function updateSidebarPosition() {
-            const mainRect = articleMain.getBoundingClientRect();
-            const sidebarRect = sidebar.getBoundingClientRect();
-            const scrollPosition = window.scrollY;
-            const headerHeight = 120;
-            
-            // Calculate when to stop sticking
-            const stopSticking = mainRect.bottom - window.innerHeight + headerHeight;
-            
-            if (scrollPosition >= stopSticking && mainRect.bottom < window.innerHeight) {
-                sidebar.style.position = 'absolute';
-                sidebar.style.top = `${articleMain.offsetHeight - sidebar.offsetHeight}px`;
-            } else if (window.innerWidth > 768) {
-                sidebar.style.position = 'sticky';
-                sidebar.style.top = `${headerHeight}px`;
-            }
-        }
-        
-        let stickyTimeout;
-        window.addEventListener('scroll', function() {
-            if (stickyTimeout) {
-                cancelAnimationFrame(stickyTimeout);
-            }
-            stickyTimeout = requestAnimationFrame(updateSidebarPosition);
-        });
-        
-        window.addEventListener('resize', updateSidebarPosition);
-    }
-    
     // ===== LINK ENHANCEMENT =====
     function enhanceExternalLinks() {
         const articleLinks = document.querySelectorAll('.article-body a');
@@ -446,7 +410,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Visual enhancements
         addScrollAnimations();
-        enhanceStickyElements();
         enhanceExternalLinks();
         
         // Accessibility improvements

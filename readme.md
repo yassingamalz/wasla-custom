@@ -184,6 +184,7 @@ astra_footer_after()
 - ✅ **Forms**: Contact form with validation
 - ✅ **SEO Ready**: Proper structure, meta tags
 - ✅ **Header Blur Issue Fixed**: Mobile menu white background corrected
+- ✅ **Article Layout Issue Fixed**: Sidebar floating/positioning resolved
 
 ## 🚀 **Next Steps - Implementation Order**
 
@@ -322,7 +323,7 @@ You've chosen the **professional WordPress development approach**. This child th
 2. **Mobile Layout**: Assumed same white line and menu issues as other pages - 🔄 **PARTIALLY RESOLVED** (menu styling fixed)
 
 ## **Article Page**
-1. **Layout Instability**: Tags and menus suddenly change position on both mobile and desktop - ❌ **PENDING**
+1. **Layout Instability**: Tags and menus suddenly change position on both mobile and desktop - ✅ **RESOLVED**
 2. **View Counter**: Not displaying real view counts, showing incorrect data - ❌ **PENDING**
 
 ## **Category Page**
@@ -356,6 +357,25 @@ You've chosen the **professional WordPress development approach**. This child th
 
 **Status**: ✅ **COMPLETED** - Mobile menu now displays crisp white background when scrolled while maintaining proper blur effects for page content.
 
+### ✅ **Article Page Layout Instability**
+**Problem**: Sidebar elements (table of contents, categories, contact info) were floating over main content and breaking out of their containers when scrolling to the "مقالات قد تهمك أيضاً" section, causing layout instability on both mobile and desktop.
+
+**Root Cause**: JavaScript function `enhanceStickyElements()` was conflicting with CSS Grid layout by changing sidebar from `position: sticky` to `position: absolute`, breaking the sidebar out of its grid container.
+
+**Solution**: 
+- Removed problematic `enhanceStickyElements()` JavaScript function
+- CSS `position: sticky` already handles sidebar behavior perfectly
+- Preserved all other JavaScript functionality (Table of Contents, reading progress bar, social sharing, image zoom)
+- Maintained CSS Grid layout integrity throughout the entire page
+
+**Technical Details**:
+- Eliminated JavaScript position override: `sidebar.style.position = 'absolute'`
+- CSS Grid layout remains stable: `grid-template-columns: 1fr 350px`
+- Sidebar stays within its designated 350px column
+- No more floating/overlapping elements during scroll
+
+**Status**: ✅ **COMPLETED** - Sidebar now maintains proper positioning within the grid layout and doesn't interfere with main content or cause floating elements.
+
 ---
 
 ## **PRIORITY NEXT STEPS**
@@ -363,4 +383,4 @@ You've chosen the **professional WordPress development approach**. This child th
 2. Mobile menu outside-click functionality 
 3. Contact form functionality
 4. Blog categories clickability
-5. Article page layout stability
+5. Article page view counter accuracy
