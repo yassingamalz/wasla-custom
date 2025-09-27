@@ -1,0 +1,17 @@
+/*
+ Theme Name: Wasla Custom Astra
+ Theme URI: https://wasla.com
+ Description: Astra Child Theme with Wasla custom colors
+ Author: Yassin Sohim
+ Author URI: https://wasla.com
+ Template: astra
+ Version: 1.0.0
+*/
+
+/* Define Wasla brand colors */
+:root {
+  --wasla-primary: #000B58;   /* main color */
+  --wasla-secondary: #003161; /* secondary color */
+  --wasla-tertiary: #006A67;  /* tertiary color */
+  --wasla-accent: #FFF4B7;    /* accent color */
+}
