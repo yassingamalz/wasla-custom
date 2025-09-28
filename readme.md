@@ -550,6 +550,25 @@ You've chosen the **professional WordPress development approach**. This child th
 3. **New Users**: Will automatically get proper display names based on registration data
 4. **Fallback**: If no name data available, displays "فريق وصلة" as default
 
+### ✅ **Comment System Loading Order Resolution**
+**Problem**: Comment system displayed fatal error "call_user_func(): Argument #1 ($callback) must be a valid callback, function 'wasla_comment_callback' not found" when users tried to view or interact with comments on article pages.
+
+**Root Cause**: Custom comment callback function `wasla_comment_callback` was defined at the bottom of `comments.php` file, but WordPress tried to call this function before the file was completely loaded, causing function not found error.
+
+**Solution**: 
+- Moved `wasla_comment_callback` function from `comments.php` to `functions.php` for proper loading order
+- Ensured function is available globally before WordPress comment system attempts to call it
+- Preserved all existing comment styling and functionality
+- Maintained WordPress comment threading and reply capabilities
+
+**Technical Details**:
+- Function relocation: `wasla_comment_callback` moved to `functions.php` with proper `if ( ! function_exists() )` wrapper
+- WordPress loading order: `functions.php` loads before template files, ensuring function availability
+- Comment template: Simplified `comments.php` with reference to globally defined function
+- No functionality loss: All comment features, styling, and interactions preserved
+
+**Status**: ✅ **COMPLETED** - Comment system now works without errors, maintaining all existing functionality and beautiful Wasla styling.
+
 ---
 
 ## **PRIORITY NEXT STEPS**

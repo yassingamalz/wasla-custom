@@ -554,6 +554,129 @@ function wasla_add_admin_menu() {
 }
 add_action( 'admin_menu', 'wasla_add_admin_menu' );
 
+/**
+ * Comment callback function for custom comment display
+ * Handles individual comment rendering with Wasla styling
+ */
+if ( ! function_exists( 'wasla_comment_callback' ) ) {
+    function wasla_comment_callback( $comment, $args, $depth ) {
+        $GLOBALS['comment'] = $comment;
+        extract($args, EXTR_SKIP);
+
+        if ( 'div' == $args['style'] ) {
+            $tag = 'div';
+            $add_below = 'comment';
+        } else {
+            $tag = 'li';
+            $add_below = 'div-comment';
+        }
+        ?>
+        <<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+            
+            <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+                <div class="comment-author-avatar">
+                    <?php 
+                    if ( $args['avatar_size'] != 0 ) {
+                        echo get_avatar( $comment, $args['avatar_size'], '', get_comment_author(), array( 'class' => 'comment-avatar' ) ); 
+                    } else {
+                        echo '<div class="comment-avatar-placeholder"><i class="bi bi-person-circle"></i></div>';
+                    }
+                    ?>
+                </div>
+                
+                <div class="comment-content-wrapper">
+                    <div class="comment-meta">
+                        <div class="comment-author-info">
+                            <h4 class="comment-author-name">
+                                <?php 
+                                $author_url = get_comment_author_url();
+                                if ( $author_url && $author_url !== 'http://' ) {
+                                    echo '<a href="' . esc_url( $author_url ) . '" target="_blank" rel="nofollow">' . get_comment_author() . '</a>';
+                                } else {
+                                    echo get_comment_author();
+                                }
+                                ?>
+                                
+                                <?php if ( $comment->user_id === get_the_author_meta('ID') ) : ?>
+                                    <span class="comment-author-badge">
+                                        <i class="bi bi-patch-check-fill"></i>
+                                        الكاتب
+                                    </span>
+                                <?php endif; ?>
+                            </h4>
+                            
+                            <div class="comment-metadata">
+                                <time datetime="<?php comment_time('c'); ?>" class="comment-date">
+                                    <i class="bi bi-clock"></i>
+                                    <?php 
+                                    $comment_date = get_comment_date('U');
+                                    $current_time = current_time('U');
+                                    $time_diff = $current_time - $comment_date;
+                                    
+                                    if ( $time_diff < 3600 ) { // Less than 1 hour
+                                        echo 'منذ ' . ceil($time_diff / 60) . ' دقيقة';
+                                    } elseif ( $time_diff < 86400 ) { // Less than 1 day
+                                        echo 'منذ ' . ceil($time_diff / 3600) . ' ساعة';
+                                    } elseif ( $time_diff < 604800 ) { // Less than 1 week
+                                        echo 'منذ ' . ceil($time_diff / 86400) . ' يوم';
+                                    } else {
+                                        echo get_comment_date('j F Y');
+                                    }
+                                    ?>
+                                </time>
+                                
+                                <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-permalink">
+                                    <i class="bi bi-link-45deg"></i>
+                                    رابط
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-actions">
+                            <?php 
+                            comment_reply_link( 
+                                array_merge( $args, 
+                                    array( 
+                                        'add_below' => $add_below, 
+                                        'depth'     => $depth, 
+                                        'max_depth' => $args['max_depth'],
+                                        'reply_text' => '<i class="bi bi-reply"></i> رد'
+                                    ) 
+                                ) 
+                            ); 
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="comment-content">
+                        <?php if ( $comment->comment_approved == '0' ) : ?>
+                            <div class="comment-awaiting-moderation">
+                                <i class="bi bi-hourglass-split"></i>
+                                <em>تعليقك في انتظار المراجعة.</em>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="comment-text">
+                            <?php comment_text(); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <?php if ( $comment->comment_approved != '0' ) : ?>
+                <div class="comment-footer">
+                    <div class="comment-reactions">
+                        <button type="button" class="comment-like-btn" data-comment-id="<?php comment_ID(); ?>">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                            <span class="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php
+    }
+}
+
 function wasla_views_admin_page() {
     if ( isset( $_POST['reset_views'] ) ) {
         wasla_reset_all_view_counts();
