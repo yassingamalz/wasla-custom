@@ -670,86 +670,65 @@ get_header(); ?>
                 <p class="contact-form-subtitle">املأ النموذج التالي وسنتواصل معك في أقرب وقت ممكن</p>
                 
                 <form class="contact-form" method="post" action="">
-                    <?php
-                    // Simple form processing
-                    if (isset($_POST['submit_contact'])) {
-                        $name = sanitize_text_field($_POST['name']);
-                        $email = sanitize_email($_POST['email']);
-                        $phone = sanitize_text_field($_POST['phone']);
-                        $subject = sanitize_text_field($_POST['subject']);
-                        $inquiry_type = sanitize_text_field($_POST['inquiry_type']);
-                        $message = sanitize_textarea_field($_POST['message']);
-                        
-                        // Basic validation
-                        if (!empty($name) && !empty($email) && !empty($message)) {
-                            $to = 'info@wasla-eg.com';
-                            $email_subject = "رسالة جديدة من موقع وصلة - $subject";
-                            $email_body = "
-                            الاسم: $name
-                            البريد الإلكتروني: $email
-                            الهاتف: $phone
-                            نوع الاستفسار: $inquiry_type
-                            الموضوع: $subject
-                            
-                            الرسالة:
-                            $message
-                            ";
-                            
-                            $headers = array('Content-Type: text/html; charset=UTF-8', "From: $email");
-                            
-                            if (wp_mail($to, $email_subject, $email_body, $headers)) {
-                                echo '<div class="form-message success">تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</div>';
-                            } else {
-                                echo '<div class="form-message error">حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى.</div>';
-                            }
-                        } else {
-                            echo '<div class="form-message error">يرجى ملء جميع الحقول المطلوبة.</div>';
-                        }
-                    }
+                    <?php 
+                    // Display any form messages
+                    echo wasla_get_contact_form_message();
+                    
+                    // Add nonce for security
+                    wp_nonce_field('wasla_contact_form', 'wasla_contact_nonce');
                     ?>
                     
                     <div class="form-group half">
                         <div>
                             <label for="name">الاسم الكامل *</label>
-                            <input type="text" id="name" name="name" required placeholder="اكتب اسمك الكامل">
+                            <input type="text" id="name" name="name" required 
+                                   placeholder="اكتب اسمك الكامل" 
+                                   value="<?php echo wasla_get_contact_form_value('name'); ?>">
                         </div>
                         <div>
                             <label for="email">البريد الإلكتروني *</label>
-                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                            <input type="email" id="email" name="email" required 
+                                   placeholder="example@email.com"
+                                   value="<?php echo wasla_get_contact_form_value('email'); ?>">
                         </div>
                     </div>
                     
                     <div class="form-group half">
                         <div>
                             <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+20 123 456 7890">
+                            <input type="tel" id="phone" name="phone" 
+                                   placeholder="+20 123 456 7890"
+                                   value="<?php echo wasla_get_contact_form_value('phone'); ?>">
                         </div>
                         <div>
                             <label for="inquiry_type">نوع الاستفسار</label>
                             <select id="inquiry_type" name="inquiry_type">
                                 <option value="">اختر نوع الاستفسار</option>
-                                <option value="don_bosco">دون بوسكو</option>
-                                <option value="thanawya">الثانوية العامة</option>
-                                <option value="universities">الجامعات</option>
-                                <option value="consultation">استشارة تعليمية</option>
-                                <option value="technical">مشكلة تقنية</option>
-                                <option value="other">أخرى</option>
+                                <option value="don_bosco" <?php selected(wasla_get_contact_form_value('inquiry_type'), 'don_bosco'); ?>>دون بوسكو</option>
+                                <option value="thanawya" <?php selected(wasla_get_contact_form_value('inquiry_type'), 'thanawya'); ?>>الثانوية العامة</option>
+                                <option value="universities" <?php selected(wasla_get_contact_form_value('inquiry_type'), 'universities'); ?>>الجامعات</option>
+                                <option value="consultation" <?php selected(wasla_get_contact_form_value('inquiry_type'), 'consultation'); ?>>استشارة تعليمية</option>
+                                <option value="technical" <?php selected(wasla_get_contact_form_value('inquiry_type'), 'technical'); ?>>مشكلة تقنية</option>
+                                <option value="other" <?php selected(wasla_get_contact_form_value('inquiry_type'), 'other'); ?>>أخرى</option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="subject">موضوع الرسالة *</label>
-                        <input type="text" id="subject" name="subject" required placeholder="اكتب موضوع رسالتك">
+                        <input type="text" id="subject" name="subject" required 
+                               placeholder="اكتب موضوع رسالتك"
+                               value="<?php echo wasla_get_contact_form_value('subject'); ?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="message">الرسالة *</label>
-                        <textarea id="message" name="message" required placeholder="اكتب رسالتك هنا... كن مفصلاً قدر الإمكان لنتمكن من مساعدتك بأفضل شكل"></textarea>
+                        <textarea id="message" name="message" required 
+                                  placeholder="اكتب رسالتك هنا... كن مفصلاً قدر الإمكان لنتمكن من مساعدتك بأفضل شكل"><?php echo wasla_get_contact_form_value('message'); ?></textarea>
                     </div>
                     
                     <div class="form-submit">
-                        <button type="submit" name="submit_contact" class="btn-submit">
+                        <button type="submit" name="wasla_contact_submit" class="btn-submit">
                             <i class="bi bi-send"></i> إرسال الرسالة
                         </button>
                         <button type="reset" class="btn-reset">

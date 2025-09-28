@@ -677,6 +677,142 @@ if ( ! function_exists( 'wasla_comment_callback' ) ) {
     }
 }
 
+/**
+ * Contact form processing functionality
+ * Handles form submission and email sending
+ */
+function wasla_handle_contact_form() {
+    if ( isset($_POST['wasla_contact_submit']) && wp_verify_nonce($_POST['wasla_contact_nonce'], 'wasla_contact_form') ) {
+        
+        $name = sanitize_text_field($_POST['name']);
+        $email = sanitize_email($_POST['email']);
+        $phone = sanitize_text_field($_POST['phone']);
+        $subject = sanitize_text_field($_POST['subject']);
+        $inquiry_type = sanitize_text_field($_POST['inquiry_type']);
+        $message = sanitize_textarea_field($_POST['message']);
+        
+        $errors = array();
+        
+        // Validation
+        if (empty($name)) {
+            $errors[] = 'الاسم مطلوب';
+        }
+        
+        if (empty($email) || !is_email($email)) {
+            $errors[] = 'البريد الإلكتروني غير صحيح';
+        }
+        
+        if (empty($subject)) {
+            $errors[] = 'موضوع الرسالة مطلوب';
+        }
+        
+        if (empty($message)) {
+            $errors[] = 'نص الرسالة مطلوب';
+        }
+        
+        if (empty($errors)) {
+            // Prepare email
+            $to = get_option('admin_email', 'info@wasla-eg.com');
+            $email_subject = "رسالة جديدة من موقع وصلة - " . $subject;
+            $email_body = "\n";
+            $email_body .= "الاسم: " . $name . "\n";
+            $email_body .= "البريد الإلكتروني: " . $email . "\n";
+            $email_body .= "الهاتف: " . $phone . "\n";
+            $email_body .= "نوع الاستفسار: " . $inquiry_type . "\n";
+            $email_body .= "الموضوع: " . $subject . "\n\n";
+            $email_body .= "الرسالة:\n" . $message . "\n\n";
+            $email_body .= "---\n";
+            $email_body .= "تم الإرسال من: " . home_url() . "\n";
+            $email_body .= "التاريخ: " . current_time('Y-m-d H:i:s') . "\n";
+            
+            $headers = array(
+                'Content-Type: text/plain; charset=UTF-8',
+                'From: ' . get_bloginfo('name') . ' <' . get_option('admin_email') . '>',
+                'Reply-To: ' . $name . ' <' . $email . '>'
+            );
+            
+            // Send email
+            $sent = wp_mail($to, $email_subject, $email_body, $headers);
+            
+            if ($sent) {
+                // Store success message using WordPress transients instead of sessions
+                set_transient('wasla_contact_success_' . session_id(), 'تم إرسال رسالتك بنجاح! سنتواصل معك في أقرب وقت ممكن.', 300);
+            } else {
+                set_transient('wasla_contact_error_' . session_id(), 'حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.', 300);
+            }
+        } else {
+            // Store error messages
+            set_transient('wasla_contact_error_' . session_id(), implode('<br>', $errors), 300);
+            set_transient('wasla_contact_data_' . session_id(), $_POST, 300);
+        }
+        
+        // Redirect back to contact page to prevent resubmission
+        wp_redirect(add_query_arg('form_submitted', '1', get_permalink()));
+        exit;
+    }
+}
+add_action('init', 'wasla_handle_contact_form');
+
+/**
+ * Initialize session for contact form
+ * Starts session early to avoid header issues
+ */
+function wasla_init_session() {
+    if (!session_id() && !headers_sent()) {
+        session_start();
+    }
+}
+add_action('init', 'wasla_init_session', 1);
+
+/**
+ * Get contact form message
+ * Returns success or error message from transients
+ */
+function wasla_get_contact_form_message() {
+    if (!session_id() && !headers_sent()) {
+        session_start();
+    }
+    
+    $session_id = session_id();
+    $message = '';
+    
+    $success = get_transient('wasla_contact_success_' . $session_id);
+    $error = get_transient('wasla_contact_error_' . $session_id);
+    
+    if ($success) {
+        $message = '<div class="form-message success">' . $success . '</div>';
+        delete_transient('wasla_contact_success_' . $session_id);
+    } elseif ($error) {
+        $message = '<div class="form-message error">' . $error . '</div>';
+        delete_transient('wasla_contact_error_' . $session_id);
+    }
+    
+    return $message;
+}
+
+/**
+ * Get contact form field value
+ * Returns previously submitted value in case of error
+ */
+function wasla_get_contact_form_value($field) {
+    if (!session_id() && !headers_sent()) {
+        session_start();
+    }
+    
+    $session_id = session_id();
+    $data = get_transient('wasla_contact_data_' . $session_id);
+    
+    if ($data && isset($data[$field])) {
+        $value = $data[$field];
+        if ($field === 'message') {
+            delete_transient('wasla_contact_data_' . $session_id);
+        }
+        return esc_attr($value);
+    }
+    
+    return '';
+}
+
 function wasla_views_admin_page() {
     if ( isset( $_POST['reset_views'] ) ) {
         wasla_reset_all_view_counts();
