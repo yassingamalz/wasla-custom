@@ -832,6 +832,7 @@ endif;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    border-radius: 50px !important;
 }
 
 .btn-reset {
@@ -850,6 +851,7 @@ endif;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    border-radius: 50px !important;
 }
 
 .btn-reset:hover {

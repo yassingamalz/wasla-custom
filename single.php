@@ -232,7 +232,6 @@ get_header(); ?>
                                             <i class="bi bi-chevron-right"></i>
                                             <span>المقال السابق</span>
                                         </div>
-                                        <h4 class="nav-title"><?php echo get_the_title($prev_post->ID); ?></h4>
                                     </a>
                                 </div>
                             <?php endif; ?>
@@ -244,7 +243,6 @@ get_header(); ?>
                                             <span>المقال التالي</span>
                                             <i class="bi bi-chevron-left"></i>
                                         </div>
-                                        <h4 class="nav-title"><?php echo get_the_title($next_post->ID); ?></h4>
                                     </a>
                                 </div>
                             <?php endif; ?>
