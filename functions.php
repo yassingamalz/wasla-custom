@@ -71,6 +71,9 @@ function wasla_theme_support() {
         'caption',
     ) );
     add_theme_support( 'nav-menus' );
+    add_theme_support( 'comments' );
+    add_post_type_support( 'post', 'comments' );
+    add_post_type_support( 'page', 'comments' );
 }
 add_action( 'after_setup_theme', 'wasla_theme_support' );
 
@@ -300,4 +303,83 @@ function wasla_enqueue_single_article_assets() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'wasla_enqueue_single_article_assets' );
+
+/**
+ * Comment functionality setup
+ */
+function wasla_setup_comments() {
+    add_theme_support( 'html5', array( 'comment-form', 'comment-list' ) );
+    add_theme_support( 'post-thumbnails' );
+    
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
+}
+add_action( 'after_setup_theme', 'wasla_setup_comments' );
+
+/**
+ * Enable comments on posts by default
+ */
+function wasla_enable_comments_on_posts( $data ) {
+    if ( $data['post_type'] === 'post' ) {
+        $data['comment_status'] = 'open';
+    }
+    return $data;
+}
+add_filter( 'wp_insert_post_data', 'wasla_enable_comments_on_posts' );
+
+/**
+ * Handle comment form styling
+ */
+function wasla_comment_form_defaults( $defaults ) {
+    $defaults['class_submit'] = 'submit btn-primary';
+    $defaults['class_form'] = 'wasla-comment-form';
+    return $defaults;
+}
+add_filter( 'comment_form_defaults', 'wasla_comment_form_defaults' );
+
+/**
+ * Customize comment walker
+ */
+function wasla_comment_walker( $walker, $args ) {
+    return 'wasla_comment_callback';
+}
+add_filter( 'comment_form_default_walker', 'wasla_comment_walker', 10, 2 );
+
+/**
+ * Add AJAX support for comments
+ */
+function wasla_enqueue_comment_ajax() {
+    if ( is_singular() && comments_open() ) {
+        wp_enqueue_script( 'jquery' );
+        wp_localize_script( 'jquery', 'wasla_ajax', array(
+            'ajax_url' => admin_url( 'admin-ajax.php' ),
+            'nonce' => wp_create_nonce( 'wasla_comment_nonce' )
+        ));
+    }
+}
+add_action( 'wp_enqueue_scripts', 'wasla_enqueue_comment_ajax' );
+
+/**
+ * Handle comment processing with proper validation
+ */
+function wasla_process_comment( $commentdata ) {
+    if ( ! wp_verify_nonce( $_POST['wasla_comment_nonce'] ?? '', 'wasla_comment_nonce' ) ) {
+        wp_die( 'Security check failed.' );
+    }
+    
+    $commentdata['comment_type'] = 'comment';
+    $commentdata['comment_approved'] = 1;
+    
+    return $commentdata;
+}
+add_filter( 'preprocess_comment', 'wasla_process_comment' );
+
+/**
+ * Add nonce field to comment form
+ */
+function wasla_add_comment_nonce() {
+    wp_nonce_field( 'wasla_comment_nonce', 'wasla_comment_nonce' );
+}
+add_action( 'comment_form', 'wasla_add_comment_nonce' );
 ?>

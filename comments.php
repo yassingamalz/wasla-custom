@@ -118,13 +118,14 @@ $comment_count = get_comments_number();
             </div>
 
             <?php
+            $commenter = wp_get_current_commenter();
             $comment_form_args = array(
                 'title_reply'          => '',
                 'title_reply_to'       => 'رد على %s',
                 'cancel_reply_link'    => 'إلغاء الرد',
                 'label_submit'         => 'نشر التعليق',
                 'submit_button'        => '<button name="%1$s" type="submit" id="%2$s" class="%3$s"><i class="bi bi-send"></i> %4$s</button>',
-                'submit_field'         => '<div class="form-submit-wrapper">%1$s %2$s</div>',
+                'submit_field'         => '<div class="form-submit-wrapper">%1$s <button type="reset" class="btn-reset"><i class="bi bi-arrow-clockwise"></i> مسح البيانات</button> %2$s</div>',
                 'class_form'           => 'wasla-comment-form',
                 'comment_field'        => '
                     <div class="comment-form-comment">
@@ -291,37 +292,41 @@ endif;
 <style>
 /* ===== WASLA COMMENTS STYLING ===== */
 .wasla-comments-section {
-    background: #f8f9fa;
-    border-radius: 20px;
-    padding: 2.5rem;
-    margin: 3rem 0;
-    border: 1px solid #e9ecef;
-    box-shadow: 0 5px 20px rgba(0, 11, 88, 0.05);
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
     font-family: 'Tajawal', sans-serif;
     direction: rtl;
+    width: 100%;
 }
 
 /* Comments Header */
 .comments-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin: 4rem auto 3rem;
+    max-width: 900px;
+    padding: 3rem 2rem 2rem;
     border-bottom: 2px solid #FFF4B7;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 25px 25px 0 0;
 }
 
 .comments-title {
     font-family: 'Cairo', sans-serif;
-    font-size: 1.8rem;
+    font-size: 3rem;
     color: #000B58;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .comments-title i {
     color: #006A67;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .comments-stats {
@@ -329,7 +334,8 @@ endif;
     gap: 2rem;
     flex-wrap: wrap;
     align-items: center;
-    font-size: 0.95rem;
+    justify-content: center;
+    font-size: 1.2rem;
     color: #666;
 }
 
@@ -382,8 +388,10 @@ endif;
 /* Comment List */
 .comment-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 900px;
+    background: #f8f9fa;
 }
 
 .comment-list .comment {
@@ -676,12 +684,14 @@ endif;
 
 /* Comment Form */
 .comment-form-wrapper {
-    margin-top: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
     background: white;
-    border-radius: 20px;
-    padding: 2.5rem;
-    border: 1px solid #e9ecef;
-    box-shadow: 0 3px 15px rgba(0, 11, 88, 0.05);
+    border-radius: 0 0 25px 25px;
+    padding: 3rem;
+    border: 1px solid #f0f0f0;
+    border-top: none;
+    box-shadow: 0 10px 40px rgba(0, 11, 88, 0.1);
 }
 
 .comment-form-header {
@@ -691,14 +701,14 @@ endif;
 
 .comment-reply-title {
     font-family: 'Cairo', sans-serif;
-    font-size: 1.8rem;
+    font-size: 3rem;
     color: #000B58;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .comment-reply-title i {
@@ -708,11 +718,12 @@ endif;
 
 .comment-form-description {
     color: #666;
-    font-size: 1rem;
-    margin: 0;
+    font-size: 1.2rem;
+    margin: 0 0 3rem 0;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Tajawal', sans-serif;
 }
 
 .wasla-comment-form {
@@ -746,7 +757,7 @@ endif;
     width: 100%;
     padding: 15px 20px;
     border: 2px solid #e9ecef;
-    border-radius: 12px;
+    border-radius: 15px;
     font-size: 1rem;
     font-family: 'Tajawal', sans-serif;
     transition: all 0.3s ease;
@@ -798,8 +809,10 @@ endif;
 
 .form-submit-wrapper {
     display: flex;
+    gap: 1rem;
     justify-content: center;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 .wasla-comment-form .submit {
@@ -821,6 +834,31 @@ endif;
     gap: 0.5rem;
 }
 
+.btn-reset {
+    background: transparent;
+    color: #666;
+    padding: 18px 40px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Cairo', sans-serif;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-reset:hover {
+    background: #f8f9fa;
+    border-color: #006A67;
+    color: #006A67;
+    transform: translateY(-2px);
+}
+
 .wasla-comment-form .submit:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 35px rgba(0, 11, 88, 0.35);
@@ -832,9 +870,18 @@ endif;
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .wasla-comments-section {
+    .comments-header {
+        padding: 2rem 2rem 2rem;
+        margin: 3rem auto 0;
+    }
+    
+    .comment-list {
         padding: 2rem;
-        margin: 2rem 0;
+    }
+    
+    .comment-form-wrapper {
+        padding: 2rem 1.5rem;
+        margin: 0 auto;
     }
     
     .comments-title {
@@ -888,12 +935,26 @@ endif;
 }
 
 @media (max-width: 480px) {
-    .wasla-comments-section {
+    .comments-title {
+        font-size: 2rem;
+    }
+    
+    .comment-reply-title {
+        font-size: 2rem;
+    }
+    
+    .comments-header {
+        padding: 2rem 1.5rem 2rem;
+        margin: 2rem auto 0;
+    }
+    
+    .comment-list {
         padding: 1.5rem;
     }
     
     .comment-form-wrapper {
-        padding: 1.5rem;
+        padding: 1.5rem 1rem;
+        margin: 0 auto;
     }
     
     .comment-list .comment {
@@ -907,7 +968,8 @@ endif;
         font-size: 1.5rem;
     }
     
-    .wasla-comment-form .submit {
+    .wasla-comment-form .submit,
+    .btn-reset {
         width: 100%;
         max-width: 300px;
     }
