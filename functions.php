@@ -382,4 +382,195 @@ function wasla_add_comment_nonce() {
     wp_nonce_field( 'wasla_comment_nonce', 'wasla_comment_nonce' );
 }
 add_action( 'comment_form', 'wasla_add_comment_nonce' );
+
+/**
+ * Post Views Management System
+ */
+function wasla_initialize_post_views( $post_id ) {
+    $existing_views = get_post_meta( $post_id, '_wasla_view_count', true );
+    
+    if ( empty( $existing_views ) ) {
+        $initial_views = rand( 100, 500 );
+        update_post_meta( $post_id, '_wasla_view_count', $initial_views );
+    }
+}
+
+function wasla_set_initial_views_on_publish( $post_id, $post, $update ) {
+    if ( $post->post_type === 'post' && $post->post_status === 'publish' && ! $update ) {
+        wasla_initialize_post_views( $post_id );
+    }
+}
+add_action( 'wp_insert_post', 'wasla_set_initial_views_on_publish', 10, 3 );
+
+function wasla_track_post_view( $post_id ) {
+    if ( is_single() && ! is_user_logged_in() && ! is_admin() ) {
+        $current_views = get_post_meta( $post_id, '_wasla_view_count', true );
+        $current_views = $current_views ? intval( $current_views ) : 0;
+        
+        $visitor_key = 'wasla_viewed_' . $post_id;
+        
+        if ( ! isset( $_COOKIE[$visitor_key] ) && ! headers_sent() ) {
+            $new_views = $current_views + 1;
+            update_post_meta( $post_id, '_wasla_view_count', $new_views );
+        }
+    }
+}
+
+function wasla_get_post_views( $post_id ) {
+    $views = get_post_meta( $post_id, '_wasla_view_count', true );
+    return $views ? intval( $views ) : rand( 100, 500 );
+}
+
+function wasla_auto_track_views() {
+    if ( is_single() ) {
+        global $post;
+        wasla_track_post_view( $post->ID );
+    }
+}
+add_action( 'wp_head', 'wasla_auto_track_views' );
+
+/**
+ * Author Display Management
+ */
+function wasla_get_proper_author_name( $author_id = null ) {
+    if ( ! $author_id ) {
+        $author_id = get_the_author_meta( 'ID' );
+    }
+    
+    $display_name = get_the_author_meta( 'display_name', $author_id );
+    $first_name = get_the_author_meta( 'first_name', $author_id );
+    $last_name = get_the_author_meta( 'last_name', $author_id );
+    $user_login = get_the_author_meta( 'user_login', $author_id );
+    
+    if ( $display_name && ! filter_var( $display_name, FILTER_VALIDATE_EMAIL ) ) {
+        return $display_name;
+    }
+    
+    if ( $first_name && $last_name ) {
+        return $first_name . ' ' . $last_name;
+    }
+    
+    if ( $first_name ) {
+        return $first_name;
+    }
+    
+    if ( $user_login && ! filter_var( $user_login, FILTER_VALIDATE_EMAIL ) ) {
+        return $user_login;
+    }
+    
+    return 'فريق وصلة';
+}
+
+function wasla_set_default_display_name( $user_id ) {
+    $user_info = get_userdata( $user_id );
+    $display_name = $user_info->display_name;
+    
+    if ( filter_var( $display_name, FILTER_VALIDATE_EMAIL ) || empty( $display_name ) ) {
+        $first_name = get_user_meta( $user_id, 'first_name', true );
+        $last_name = get_user_meta( $user_id, 'last_name', true );
+        
+        if ( $first_name && $last_name ) {
+            $new_display_name = $first_name . ' ' . $last_name;
+        } elseif ( $first_name ) {
+            $new_display_name = $first_name;
+        } else {
+            $new_display_name = 'كاتب وصلة';
+        }
+        
+        wp_update_user( array(
+            'ID' => $user_id,
+            'display_name' => $new_display_name
+        ) );
+    }
+}
+add_action( 'user_register', 'wasla_set_default_display_name' );
+add_action( 'profile_update', 'wasla_set_default_display_name' );
+
+/**
+ * Initialize existing posts with view counts
+ */
+function wasla_initialize_existing_posts() {
+    $posts = get_posts( array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key' => '_wasla_view_count',
+                'compare' => 'NOT EXISTS'
+            )
+        )
+    ) );
+    
+    foreach ( $posts as $post ) {
+        wasla_initialize_post_views( $post->ID );
+    }
+}
+
+register_activation_hook( __FILE__, 'wasla_initialize_existing_posts' );
+
+/**
+ * Auto-initialize posts on first load (for existing installations)
+ */
+function wasla_auto_init_check() {
+    $init_flag = get_option( 'wasla_views_initialized', false );
+    
+    if ( ! $init_flag ) {
+        wasla_initialize_existing_posts();
+        update_option( 'wasla_views_initialized', true );
+    }
+}
+add_action( 'init', 'wasla_auto_init_check' );
+
+/**
+ * Admin function to reset all view counts
+ */
+function wasla_reset_all_view_counts() {
+    if ( current_user_can( 'manage_options' ) ) {
+        $posts = get_posts( array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => -1
+        ) );
+        
+        foreach ( $posts as $post ) {
+            delete_post_meta( $post->ID, '_wasla_view_count' );
+            wasla_initialize_post_views( $post->ID );
+        }
+    }
+}
+
+/**
+ * Add admin menu for view management
+ */
+function wasla_add_admin_menu() {
+    add_management_page(
+        'إدارة المشاهدات',
+        'مشاهدات المقالات',
+        'manage_options',
+        'wasla-views',
+        'wasla_views_admin_page'
+    );
+}
+add_action( 'admin_menu', 'wasla_add_admin_menu' );
+
+function wasla_views_admin_page() {
+    if ( isset( $_POST['reset_views'] ) ) {
+        wasla_reset_all_view_counts();
+        echo '<div class="notice notice-success"><p>تم إعادة تعيين عدادات المشاهدة بنجاح</p></div>';
+    }
+    
+    if ( isset( $_POST['init_views'] ) ) {
+        wasla_initialize_existing_posts();
+        echo '<div class="notice notice-success"><p>تم تهيئة عدادات المشاهدة للمقالات الموجودة</p></div>';
+    }
+    
+    echo '<div class="wrap">';
+    echo '<h1>إدارة مشاهدات المقالات</h1>';
+    echo '<form method="post">';
+    echo '<p><input type="submit" name="init_views" class="button button-primary" value="تهيئة المشاهدات للمقالات الموجودة"></p>';
+    echo '<p><input type="submit" name="reset_views" class="button button-secondary" value="إعادة تعيين جميع المشاهدات" onclick="return confirm(\'هل أنت متأكد؟\')"></p>';
+    echo '</form>';
+    echo '</div>';
+}
 ?>

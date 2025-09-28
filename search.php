@@ -613,7 +613,7 @@ get_header(); ?>
                                     </div>
                                     <div class="result-meta-item">
                                         <i class="bi bi-person-circle"></i>
-                                        <span><?php echo get_the_author() ?: 'فريق وصلة'; ?></span>
+                                        <span><?php echo wasla_get_proper_author_name(); ?></span>
                                     </div>
                                 </div>
                                 

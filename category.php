@@ -174,8 +174,8 @@ get_header(); ?>
                                             </time>
                                             
                                             <span class="post-author" itemprop="author">
-                                                <i class="bi bi-person"></i>
-                                                <?php echo get_the_author() ?: 'فريق وصلة'; ?>
+                                            <i class="bi bi-person"></i>
+                                            <?php echo wasla_get_proper_author_name(); ?>
                                             </span>
                                             
                                             <span class="post-reading-time">

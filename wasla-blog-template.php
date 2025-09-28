@@ -439,7 +439,7 @@ get_header(); ?>
                                     </a>
                                     <span class="post-views">
                                         <i class="bi bi-eye"></i>
-                                        <?php echo rand(50, 500); ?> مشاهدة
+                                        <?php echo wasla_get_post_views(get_the_ID()); ?> مشاهدة
                                     </span>
                                 </div>
                             </div>

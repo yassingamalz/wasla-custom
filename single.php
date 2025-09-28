@@ -53,7 +53,7 @@ get_header(); ?>
                 
                 <div class="article-meta-item">
                     <i class="bi bi-person-circle"></i>
-                    <span><?php echo get_the_author() ?: 'فريق وصلة'; ?></span>
+                    <span><?php echo wasla_get_proper_author_name(); ?></span>
                 </div>
                 
                 <div class="article-meta-item">
@@ -63,7 +63,7 @@ get_header(); ?>
                 
                 <div class="article-meta-item">
                     <i class="bi bi-eye"></i>
-                    <span><?php echo rand(150, 2500); ?> مشاهدة</span>
+                    <span><?php echo wasla_get_post_views(get_the_ID()); ?> مشاهدة</span>
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@ get_header(); ?>
                         <meta itemprop="headline" content="<?php echo esc_attr(get_the_title()); ?>">
                         <meta itemprop="datePublished" content="<?php echo get_the_date('c'); ?>">
                         <meta itemprop="dateModified" content="<?php echo get_the_modified_date('c'); ?>">
-                        <meta itemprop="author" content="<?php echo esc_attr(get_the_author() ?: 'فريق وصلة'); ?>">
+                        <meta itemprop="author" content="<?php echo esc_attr(wasla_get_proper_author_name()); ?>">
                         
                         <div itemprop="articleBody">
                             <?php 
@@ -191,13 +191,13 @@ get_header(); ?>
                     <div class="author-box">
                         <div class="author-avatar">
                             <?php if (get_avatar($author_id)) : ?>
-                                <?php echo get_avatar($author_id, 80, '', get_the_author() . ' avatar', array('class' => 'author-img')); ?>
+                                <?php echo get_avatar($author_id, 80, '', wasla_get_proper_author_name() . ' avatar', array('class' => 'author-img')); ?>
                             <?php else : ?>
                                 <i class="bi bi-person-circle"></i>
                             <?php endif; ?>
                         </div>
                         <div class="author-info">
-                            <h3 class="author-name"><?php echo get_the_author() ?: 'فريق وصلة'; ?></h3>
+                            <h3 class="author-name"><?php echo wasla_get_proper_author_name(); ?></h3>
                             <p class="author-bio">
                                 <?php 
                                 $author_bio = get_the_author_meta('description');

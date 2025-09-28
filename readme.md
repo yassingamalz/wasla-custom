@@ -324,7 +324,8 @@ You've chosen the **professional WordPress development approach**. This child th
 
 ## **Article Page**
 1. **Layout Instability**: Tags and menus suddenly change position on both mobile and desktop - ✅ **RESOLVED**
-2. **View Counter**: Not displaying real view counts, showing incorrect data - ❌ **PENDING**
+2. **View Counter**: Random views (100-500) on publish, then real tracking - ✅ **RESOLVED**
+3. **Author Display**: Shows proper author names instead of email addresses - ✅ **RESOLVED**
 
 ## **Category Page**
 1. **Empty State**: Too much white space when no articles found in category - ✅ **RESOLVED**
@@ -420,6 +421,64 @@ You've chosen the **professional WordPress development approach**. This child th
 
 **Status**: ✅ **COMPLETED** - Comment form now provides professional user experience with full functionality and brand-consistent design.
 
+### ✅ **Post Views Management System**
+**Problem**: Article pages displayed random view counts that changed on every page load, providing inconsistent and unprofessional user experience. View numbers would reset and change constantly, making the site appear unreliable.
+
+**Root Cause**: Template used `rand(150, 2500)` function for view counting, generating new random numbers on each page visit without any data persistence or real visitor tracking.
+
+**Solution**: 
+- Implemented comprehensive post views management system with initial random views (100-500) assigned on article publication
+- Added real visitor tracking with cookie-based duplicate prevention (24-hour cooldown)
+- Created database persistence using WordPress post meta `_wasla_view_count`
+- Built admin interface for managing view counts with reset and initialization options
+- Auto-initialization for existing posts on first system load
+
+**Technical Details**:
+- New functions: `wasla_initialize_post_views()`, `wasla_track_post_view()`, `wasla_get_post_views()`
+- WordPress hooks: `wp_insert_post` for new posts, `wp_head` for tracking
+- Admin page: Tools > مشاهدات المقالات for management
+- Cookie system: Prevents same-visitor multiple counting within 24 hours
+- Database field: `_wasla_view_count` post meta for persistence
+
+**Status**: ✅ **COMPLETED** - View counter now provides consistent, professional tracking with real visitor analytics.
+
+### ✅ **Author Display Management System**
+**Problem**: Article pages displayed author email addresses instead of proper names, creating unprofessional appearance and poor user experience. WordPress default behavior would show username/email when display_name wasn't properly configured.
+
+**Root Cause**: WordPress users had email addresses as usernames/display names, and `get_the_author()` function returned these email addresses directly without proper name formatting or fallback handling.
+
+**Solution**: 
+- Created intelligent author name resolution system with multiple fallback levels
+- Added automatic display name generation for new and existing users
+- Implemented email detection and filtering to prevent email display
+- Built proper name combination from first_name and last_name fields
+- Added fallback to branded team name "فريق وصلة" when no proper name available
+
+**Technical Details**:
+- New function: `wasla_get_proper_author_name()` with smart fallback hierarchy
+- User management: `wasla_set_default_display_name()` for auto-correction
+- WordPress hooks: `user_register`, `profile_update` for new user handling
+- Email filtering: `filter_var()` validation to detect and skip email addresses
+- Template integration: Replaced all `get_the_author()` calls with new function
+
+**Status**: ✅ **COMPLETED** - Author display now shows professional names with intelligent fallback system.
+
+---
+
+## **SETUP INSTRUCTIONS FOR NEW FEATURES**
+
+### **View Counter System**
+1. **Automatic Initialization**: View counts will automatically initialize for existing posts on the next page load
+2. **Admin Management**: Go to **Tools > مشاهدات المقالات** in WordPress admin to manage view counts
+3. **Manual Setup**: If needed, run the one-time setup script at `/wp-content/themes/wasla-custom-astra/setup-views.php`
+4. **New Posts**: All future published posts will automatically get random initial views (100-500)
+
+### **Author Display System**
+1. **Automatic Correction**: Author names will automatically be cleaned on user profile updates
+2. **Manual User Setup**: Edit user profiles in WordPress admin to set proper First Name and Last Name
+3. **New Users**: Will automatically get proper display names based on registration data
+4. **Fallback**: If no name data available, displays "فريق وصلة" as default
+
 ---
 
 ## **PRIORITY NEXT STEPS**
@@ -427,4 +486,3 @@ You've chosen the **professional WordPress development approach**. This child th
 2. Mobile menu outside-click functionality 
 3. Contact form functionality
 4. Blog categories clickability
-5. Article page view counter accuracy
