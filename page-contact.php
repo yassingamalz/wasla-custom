@@ -231,8 +231,8 @@ get_header(); ?>
 
 /* Contact Form Section */
 .contact-form-section {
-    padding: 100px 0;
-    background: #f8f9fa;
+    padding: 60px 0;
+    background: white;
     width: 100%;
     margin: 0;
 }
@@ -241,7 +241,7 @@ get_header(); ?>
     max-width: 800px;
     margin: 0 auto;
     background: white;
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 25px;
     box-shadow: 0 10px 40px rgba(0, 11, 88, 0.1);
     border: 1px solid #f0f0f0;
@@ -532,7 +532,7 @@ get_header(); ?>
     .contact-methods,
     .contact-form-section,
     .faq-section {
-        padding: 70px 0;
+        padding: 40px 0;
     }
     
     .contact-methods h2,
@@ -547,7 +547,7 @@ get_header(); ?>
     }
     
     .contact-form-container {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
         margin: 0 1rem;
     }
     
@@ -593,11 +593,11 @@ get_header(); ?>
     }
     
     .contact-method-card {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
     }
     
     .contact-form-container {
-        padding: 1.5rem 1rem;
+        padding: 1rem 0.75rem;
     }
     
     .form-group input,
