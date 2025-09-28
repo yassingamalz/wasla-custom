@@ -479,6 +479,27 @@ get_header(); ?>
 </div>
 
 <style>
+/* Page layout optimization */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-content {
+    flex: 1;
+}
+
+.wasla-footer {
+    margin-top: auto;
+}
+
 /* ===== WASLA CATEGORY PAGE STYLES ===== */
 .wasla-category-page {
     direction: rtl;
@@ -488,6 +509,9 @@ get_header(); ?>
     width: 100%;
     background: #ffffff;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 /* ===== CATEGORY HERO SECTION ===== */
@@ -1281,32 +1305,54 @@ get_header(); ?>
 
 /* ===== NO POSTS SECTION ===== */
 .no-posts-section {
-    padding: 140px 0 100px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+    background: linear-gradient(135deg, #000B58 0%, #006A67 100%);
+    color: white;
     text-align: center;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.no-posts-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255, 244, 183, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .no-posts-content {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 .no-posts-icon i {
     font-size: 5rem;
-    color: #006A67;
+    color: #FFF4B7;
     margin-bottom: 2rem;
 }
 
 .no-posts-title {
     font-size: 2.5rem;
-    color: #000B58;
+    color: #ffffff;
     margin-bottom: 1rem;
     font-family: 'Cairo', sans-serif;
     font-weight: 700;
 }
 
 .no-posts-description {
-    color: #666;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.2rem;
     margin-bottom: 3rem;
     font-family: 'Tajawal', sans-serif;
@@ -1334,27 +1380,31 @@ get_header(); ?>
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #000B58 0%, #006A67 100%);
-    color: white;
+    background: #FFF4B7;
+    color: #000B58;
+    border: 2px solid #FFF4B7;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 11, 88, 0.3);
-    color: white;
+    box-shadow: 0 8px 20px rgba(255, 244, 183, 0.3);
+    color: #000B58;
+    background: white;
+    text-decoration: none;
 }
 
 .btn-secondary {
-    background: white;
-    color: #666;
-    border: 2px solid #ddd;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.7);
 }
 
 .btn-secondary:hover {
-    background: #f8f9fa;
-    border-color: #006A67;
-    color: #006A67;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #FFF4B7;
+    color: #FFF4B7;
     transform: translateY(-2px);
+    text-decoration: none;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
