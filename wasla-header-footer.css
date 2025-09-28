@@ -340,6 +340,8 @@
 .footer-social {
     display: flex;
     gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .social-link {
@@ -616,6 +618,22 @@
         padding-right: 20px;
     }
     
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
     /* Mobile menu background overlay - Clean solid background */
     .wasla-nav .nav-menu.active::before {
         content: '';
@@ -652,5 +670,18 @@
     .wasla-nav .nav-menu > li > a {
         font-size: 1.1rem;
         padding: 0.9rem 1.2rem;
+    }
+    
+    .footer-social {
+        gap: 0.8rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+    
+    .social-link {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
     }
 }
