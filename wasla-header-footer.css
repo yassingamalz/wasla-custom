@@ -651,6 +651,12 @@
     .wasla-header.scrolled .nav-menu.active::before {
         display: none !important;
     }
+    
+    /* Single Article Page - Hide specific sidebar sections on mobile */
+    .sidebar-categories,
+    .sidebar-contact {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {

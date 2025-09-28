@@ -589,10 +589,45 @@ You've chosen the **professional WordPress development approach**. This child th
 
 **Status**: ✅ **COMPLETED** - Comment system now works without errors, maintaining all existing functionality and beautiful Wasla styling.
 
+### ✅ **Single Article Mobile Sidebar Optimization**
+**Problem**: Single article page sidebar displayed "التصنيفات" (Categories) and "تواصل معنا" (Contact Us) sections on mobile devices, creating unnecessary scrolling and cluttered mobile interface that degraded user experience.
+
+**Root Cause**: CSS styling did not include mobile-specific rules to hide non-essential sidebar widgets on smaller screens, showing all sidebar content regardless of device type.
+
+**Solution**: 
+- Added targeted CSS media query rules to hide specific sidebar sections on mobile devices (768px and below)
+- Preserved Table of Contents and Related Posts as essential mobile content
+- Maintained all sidebar functionality on desktop while optimizing mobile experience
+- Used clean CSS display:none approach for performance and simplicity
+
+**Technical Details**:
+- CSS implementation: Added `.sidebar-categories, .sidebar-contact { display: none; }` within `@media (max-width: 768px)`
+- Target elements: `.sidebar-categories` and `.sidebar-contact` classes from single.php
+- Performance: No JavaScript required, pure CSS solution for optimal loading speed
+- Responsive design: Progressive enhancement approach maintaining desktop functionality
+- **Corrected**: Fixed CSS placement to ensure rules only apply to mobile devices
+
+**Status**: ✅ **COMPLETED** - Mobile users now see streamlined sidebar with only essential content while desktop users retain full sidebar functionality.
+
 ---
 
 ## **PRIORITY NEXT STEPS**
-1. Mobile layout white line spacing issue (affects all pages)
-2. Mobile menu outside-click functionality 
-3. Contact form functionality
+1. Header & Footer Extraction (Critical for maintainability)
+2. Mobile layout white line spacing issue (affects all pages)
+3. Mobile menu outside-click functionality
 4. Blog categories clickability
+
+## **LATEST FIXES - Session Summary**
+**Date**: September 29, 2025
+**Focus**: Single Article Mobile Experience Enhancement
+
+### **What Was Fixed**:
+✅ **Mobile Sidebar Optimization**: Hidden "التصنيفات" and "تواصل معنا" sections on mobile for cleaner article reading experience
+
+### **Technical Changes**:
+- **File Modified**: `wasla-header-footer.css`
+- **Change Type**: Added mobile-specific CSS rules
+- **Impact**: Improved mobile UX without affecting desktop functionality
+
+### **Next Priority**: 
+Header & Footer extraction remains the critical next step for long-term site maintainability and consistency.
