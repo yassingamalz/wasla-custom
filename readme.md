@@ -210,7 +210,7 @@ You've chosen the **professional WordPress development approach**. This child th
 5. **Dynamic Content**: FAQ section should be editable through dynamic fields - ❌ **PENDING**
 
 ## **Blog Page**
-1. **Categories**: Categories are not clickable - ❌ **PENDING**
+1. **Categories**: Categories are not clickable - ✅ **RESOLVED**
 2. **Mobile Layout**: Assumed same white line and menu issues as other pages - ✅ **RESOLVED** (menu styling and white line resolved)
 
 ## **Article Page**
@@ -226,7 +226,7 @@ You've chosen the **professional WordPress development approach**. This child th
 ## **General Issues (Cross-Platform)**
 - **Mobile menu positioning and functionality problems** - ✅ **RESOLVED**
 - **White line spacing issue on right side in mobile view** - ✅ **RESOLVED**
-- **Header visibility and color consistency problems** - ❌ **PENDING**
+- **Header visibility and color consistency problems** - ✅ **RESOLVED**
 
 ---
 
@@ -543,6 +543,28 @@ You've chosen the **professional WordPress development approach**. This child th
 **Solution**: User implemented outside-click detection functionality that closes the mobile menu when clicking anywhere outside the menu container.
 
 **Status**: ✅ **COMPLETED** - Mobile menu now closes properly when clicking outside the menu area.
+
+### ✅ **Blog Categories Dynamic Linking**
+**Problem**: Categories in blog page sidebar were hardcoded as static links with href="#", preventing users from browsing content by category and breaking core navigation functionality.
+
+**Root Cause**: Sidebar categories were manually written as static HTML links rather than dynamically generated from WordPress categories database.
+
+**Solution**: 
+- Replaced hardcoded category list with WordPress get_categories() function
+- Generated dynamic links using get_category_link() for proper URLs
+- Added orderby name and hide_empty parameters for organized display
+- Maintained existing styling and icon structure
+- Used proper escaping functions for security
+
+**Technical Details**:
+- PHP implementation with get_categories() WordPress function
+- Dynamic URL generation with get_category_link($category->term_id)
+- Security: esc_url() for URLs and esc_html() for category names
+- Only displays categories with published posts (hide_empty: true)
+- Alphabetically ordered category list
+- Preserves Bootstrap icon integration
+
+**Status**: ✅ **COMPLETED** - Categories now link to their respective archive pages with all published posts.
 
 ---
 

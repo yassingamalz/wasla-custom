@@ -484,11 +484,25 @@ get_header(); ?>
                     <div class="sidebar-widget sidebar-categories">
                         <h3>التصنيفات</h3>
                         <ul>
-                            <li><a href="#"><i class="bi bi-folder"></i> دون بوسكو</a></li>
-                            <li><a href="#"><i class="bi bi-folder"></i> الثانوية العامة</a></li>
-                            <li><a href="#"><i class="bi bi-folder"></i> الجامعات</a></li>
-                            <li><a href="#"><i class="bi bi-folder"></i> نصائح المذاكرة</a></li>
-                            <li><a href="#"><i class="bi bi-folder"></i> التنسيق الجامعي</a></li>
+                            <?php
+                            $categories = get_categories(array(
+                                'orderby' => 'name',
+                                'order' => 'ASC',
+                                'hide_empty' => true
+                            ));
+                            
+                            if ($categories) :
+                                foreach ($categories as $category) :
+                            ?>
+                                <li>
+                                    <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>">
+                                        <i class="bi bi-folder"></i> <?php echo esc_html($category->name); ?>
+                                    </a>
+                                </li>
+                            <?php 
+                                endforeach;
+                            endif;
+                            ?>
                         </ul>
                     </div>
                     
