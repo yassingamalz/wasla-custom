@@ -328,6 +328,9 @@ get_header(); ?>
     box-shadow: 0 5px 25px rgba(0, 11, 88, 0.08);
     transition: all 0.3s ease;
     border: 1px solid #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .content-card:hover {
@@ -349,6 +352,9 @@ get_header(); ?>
 
 .content-card-body {
     padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-tag {
@@ -362,6 +368,8 @@ get_header(); ?>
     font-weight: 600;
     border: 1px solid #006A67;
     font-family: 'Cairo', sans-serif;
+    width: auto;
+    max-width: fit-content;
 }
 
 .content-card h3 {
@@ -378,11 +386,12 @@ get_header(); ?>
     line-height: 1.6;
     font-size: 1rem;
     font-family: 'Tajawal', sans-serif;
+    flex: 1;
 }
 
 .content-card-footer {
     padding: 0 2rem 2rem;
-    margin-top: 1rem;
+    margin-top: auto;
 }
 
 .read-more {
