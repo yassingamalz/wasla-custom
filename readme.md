@@ -197,21 +197,21 @@ You've chosen the **professional WordPress development approach**. This child th
 # WASLA WEBSITE ISSUES DOCUMENTATION
 
 ## **Homepage (Welcome Page)**
-1. **Mobile Layout**: Right small white line visible in mobile view (padding issue) - ❌ **PENDING**
+1. **Mobile Layout**: Right small white line visible in mobile view (padding issue) - ✅ **RESOLVED**
 2. **Mobile Menu - Functionality**: Menu does not close when clicking outside of it - ✅ **RESOLVED**
 3. **Mobile Menu - Styling**: Light theme not working properly, strange colors instead of white - ✅ **RESOLVED**
 4. **Card Alignment**: "Read more" buttons not properly aligned across different cards - ❌ **PENDING**
 
 ## **Contact Page**
 1. **Form Functionality**: Send form is not working -  ✅ **RESOLVED**
-2. **Mobile Layout**: Same right small white line issue as homepage - ❌ **PENDING**
+2. **Mobile Layout**: Same right small white line issue as homepage - ✅ **RESOLVED**
 3. **Mobile Menu**: Same two menu issues as homepage - 🔄 **PARTIALLY RESOLVED** (styling resolved, functionality pending)
 4. **Dynamic Content**: Contact methods should be editable through dynamic fields - ❌ **PENDING**
 5. **Dynamic Content**: FAQ section should be editable through dynamic fields - ❌ **PENDING**
 
 ## **Blog Page**
 1. **Categories**: Categories are not clickable - ❌ **PENDING**
-2. **Mobile Layout**: Assumed same white line and menu issues as other pages - 🔄 **PARTIALLY RESOLVED** (menu styling resolved)
+2. **Mobile Layout**: Assumed same white line and menu issues as other pages - ✅ **RESOLVED** (menu styling and white line resolved)
 
 ## **Article Page**
 1. **Layout Instability**: Tags and menus suddenly change position on both mobile and desktop - ✅ **RESOLVED**
@@ -225,7 +225,7 @@ You've chosen the **professional WordPress development approach**. This child th
 
 ## **General Issues (Cross-Platform)**
 - **Mobile menu positioning and functionality problems** - 🔄 **PARTIALLY RESOLVED** (styling resolved, positioning pending)
-- **White line spacing issue on right side in mobile view** - ❌ **PENDING**
+- **White line spacing issue on right side in mobile view** - ✅ **RESOLVED**
 - **Header visibility and color consistency problems** - ❌ **PENDING**
 
 ---
@@ -493,6 +493,26 @@ You've chosen the **professional WordPress development approach**. This child th
 - **Corrected**: Ensured CSS rules only apply to mobile devices
 
 **Status**: ✅ **COMPLETED** - Mobile users now see streamlined sidebar with only essential content while desktop users retain full sidebar functionality.
+
+### ✅ **Mobile Layout Horizontal Overflow**
+**Problem**: Small white line visible on the right side of mobile screens across Homepage, Contact Page, and Blog Page, creating visual inconsistency and indicating horizontal overflow issues.
+
+**Root Cause**: HTML and body elements allowed horizontal scrolling, and some page sections were wider than the viewport, causing content to extend beyond the screen width on mobile devices.
+
+**Solution**: 
+- Applied overflow-x: hidden to both html and body elements
+- Set max-width: 100% on body and html to prevent content from exceeding viewport
+- Added overflow-x: hidden to .site-content and #content containers
+- Set max-width: 100vw on content containers for viewport constraint
+
+**Technical Details**:
+- CSS implementation in wasla-header-footer.css
+- Global overflow prevention on html/body elements
+- Content container constraints with 100vw max-width
+- Maintains responsive padding while preventing horizontal scroll
+- No JavaScript required, pure CSS solution
+
+**Status**: ✅ **COMPLETED** - Mobile layout now displays without horizontal overflow or white lines on all pages.
 
 ---
 

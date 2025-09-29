@@ -33,6 +33,23 @@
     padding: 0 30px;
 }
 
+/* Prevent horizontal overflow */
+body, html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site-content,
+#content {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 /* Main header styles */
 .wasla-header {
     position: fixed;
