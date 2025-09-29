@@ -333,14 +333,18 @@ function wasla_enqueue_template_styles() {
         );
     }
     
-    // Legal Pages CSS (Privacy Policy & Terms of Service)
-    if (is_page(array('privacy-policy', 'terms-of-service', 'سياسة-الخصوصية', 'شروط-الخدمة'))) {
-        wp_enqueue_style( 
-            'wasla-legal-pages', 
-            get_stylesheet_directory_uri() . '/css/legal-pages.css', 
-            array( 'wasla-header-footer' ), 
-            WASLA_THEME_VERSION 
-        );
+    // Legal Pages CSS - Detect by page template
+    if (is_page()) {
+        $template = get_page_template_slug();
+        
+        if ($template === 'page-privacy-policy.php' || $template === 'page-terms-of-service.php') {
+            wp_enqueue_style( 
+                'wasla-legal-pages', 
+                get_stylesheet_directory_uri() . '/css/legal-pages.css', 
+                array( 'wasla-header-footer' ), 
+                WASLA_THEME_VERSION 
+            );
+        }
     }
 }
 add_action( 'wp_enqueue_scripts', 'wasla_enqueue_template_styles' );
