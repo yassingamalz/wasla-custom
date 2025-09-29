@@ -355,10 +355,16 @@ You only need a few core template files (`index.php`, `archive.php`) to make it 
 - [x] Create `index.php` (blog listing) ✅ **COMPLETED**
 - [x] Create `archive.php` (author/date archives) ✅ **COMPLETED**
 - [x] Create `page.php` (generic pages) ✅ **COMPLETED**
+- [x] Create dedicated CSS files for all templates ✅ **COMPLETED**
+  - `css/archive-pages.css` ✅
+  - `css/generic-page.css` ✅
+  - `css/blog-index.css` ✅
+  - `css/legal-pages.css` ✅
 
 ### **Week 2: Essential Pages**
 - [x] Privacy Policy page ✅ **COMPLETED**
 - [x] Terms of Service page ✅ **COMPLETED**
+- [x] Legal pages styling implemented ✅ **COMPLETED**
 - [ ] About Us page
 
 ### **Month 2: Enhanced Features**

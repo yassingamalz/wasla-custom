@@ -282,9 +282,10 @@ function wasla_admin_notices() {
 add_action( 'admin_notices', 'wasla_admin_notices' );
 
 /**
- * Enqueue Single Article Assets
+ * Enqueue Template-Specific Styles
  */
-function wasla_enqueue_single_article_assets() {
+function wasla_enqueue_template_styles() {
+    // Single Article CSS
     if (is_single()) {
         wp_enqueue_style( 
             'wasla-single-article', 
@@ -301,8 +302,48 @@ function wasla_enqueue_single_article_assets() {
             true 
         );
     }
+    
+    // Archive Pages CSS (author, date, search archives)
+    if (is_archive() && !is_category() && !is_tag()) {
+        wp_enqueue_style( 
+            'wasla-archive-pages', 
+            get_stylesheet_directory_uri() . '/css/archive-pages.css', 
+            array( 'wasla-header-footer' ), 
+            WASLA_THEME_VERSION 
+        );
+    }
+    
+    // Generic Page CSS
+    if (is_page() && !is_page_template()) {
+        wp_enqueue_style( 
+            'wasla-generic-page', 
+            get_stylesheet_directory_uri() . '/css/generic-page.css', 
+            array( 'wasla-header-footer' ), 
+            WASLA_THEME_VERSION 
+        );
+    }
+    
+    // Blog Index CSS (fallback blog page)
+    if (is_home() && !is_front_page()) {
+        wp_enqueue_style( 
+            'wasla-blog-index', 
+            get_stylesheet_directory_uri() . '/css/blog-index.css', 
+            array( 'wasla-header-footer' ), 
+            WASLA_THEME_VERSION 
+        );
+    }
+    
+    // Legal Pages CSS (Privacy Policy & Terms of Service)
+    if (is_page(array('privacy-policy', 'terms-of-service', 'سياسة-الخصوصية', 'شروط-الخدمة'))) {
+        wp_enqueue_style( 
+            'wasla-legal-pages', 
+            get_stylesheet_directory_uri() . '/css/legal-pages.css', 
+            array( 'wasla-header-footer' ), 
+            WASLA_THEME_VERSION 
+        );
+    }
 }
-add_action( 'wp_enqueue_scripts', 'wasla_enqueue_single_article_assets' );
+add_action( 'wp_enqueue_scripts', 'wasla_enqueue_template_styles' );
 
 /**
  * Comment functionality setup
