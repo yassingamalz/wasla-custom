@@ -9,7 +9,8 @@
 
 /* ===== MAIN LEGAL PAGE CONTAINERS ===== */
 .wasla-privacy-policy-page,
-.wasla-terms-page {
+.wasla-terms-page,
+.wasla-cookie-policy-page {
     direction: rtl;
     font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
     margin: 0;
@@ -145,7 +146,8 @@
 
 /* ===== POLICY CONTENT ===== */
 .privacy-policy-content,
-.terms-content {
+.terms-content,
+.cookie-policy-content {
     font-family: 'Tajawal', sans-serif;
     font-size: 1.05rem;
     line-height: 1.8;
@@ -569,8 +571,355 @@
     }
     
     .privacy-policy-content,
-    .terms-content {
+    .terms-content,
+    .cookie-policy-content {
         font-size: 11pt;
         line-height: 1.6;
+    }
+}
+
+/* ===== COOKIE POLICY SPECIFIC STYLES ===== */
+.cookie-purposes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.purpose-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.purpose-item:hover {
+    border-color: #006A67;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 106, 103, 0.15);
+}
+
+.purpose-item i {
+    font-size: 3rem;
+    color: #006A67;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.purpose-item h3 {
+    font-size: 1.3rem !important;
+    color: #000B58 !important;
+    margin: 1rem 0 !important;
+    font-family: 'Cairo', sans-serif !important;
+}
+
+.purpose-item p {
+    color: #666;
+    margin: 0 !important;
+    line-height: 1.6;
+    text-align: center !important;
+}
+
+.cookie-type {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid #e9ecef;
+}
+
+.cookie-type-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cookie-type-header i {
+    font-size: 2rem;
+    color: #006A67;
+}
+
+.cookie-type-header h3 {
+    flex: 1;
+    margin: 0 !important;
+    font-size: 1.6rem !important;
+    color: #000B58 !important;
+}
+
+.cookie-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+}
+
+.cookie-badge.required {
+    background: #dc3545;
+    color: white;
+}
+
+.cookie-badge.optional {
+    background: #6c757d;
+    color: white;
+}
+
+.cookie-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: #e7f3ff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-right: 4px solid #006A67;
+    margin-top: 1.5rem;
+}
+
+.cookie-note i {
+    font-size: 1.5rem;
+    color: #006A67;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.cookie-note p {
+    margin: 0 !important;
+    color: #333;
+    line-height: 1.6;
+}
+
+.third-party-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.third-party-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.third-party-item:hover {
+    border-color: #006A67;
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 106, 103, 0.15);
+}
+
+.third-party-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.third-party-info h4 {
+    font-family: 'Cairo', sans-serif;
+    color: #000B58;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.third-party-info p {
+    color: #666;
+    margin: 0 0 0.75rem 0;
+    font-size: 0.95rem;
+}
+
+.third-party-info a {
+    color: #006A67;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.third-party-info a:hover {
+    color: #000B58;
+    text-decoration: underline;
+}
+
+.browser-guides {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.browser-guide {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.browser-guide:hover {
+    border-color: #006A67;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 106, 103, 0.15);
+}
+
+.browser-guide i {
+    font-size: 2.5rem;
+    color: #006A67;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.browser-guide h4 {
+    font-family: 'Cairo', sans-serif;
+    color: #000B58;
+    margin: 0 0 0.75rem 0;
+    font-size: 1.2rem;
+}
+
+.browser-guide p {
+    color: #666;
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.browser-guide a {
+    color: #006A67;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.browser-guide a:hover {
+    color: #000B58;
+    text-decoration: underline;
+}
+
+.impact-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: #fff3cd;
+    padding: 2rem;
+    border-radius: 15px;
+    border-right: 4px solid #ffc107;
+}
+
+.impact-warning > i {
+    font-size: 3rem;
+    color: #ff9800;
+    flex-shrink: 0;
+}
+
+.impact-content h3 {
+    font-family: 'Cairo', sans-serif;
+    color: #000B58;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.impact-content p {
+    color: #666;
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+}
+
+.impact-content ul {
+    margin: 0 0 0 1.5rem;
+    padding: 0;
+}
+
+.impact-content li {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.duration-table {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.duration-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    gap: 1.5rem;
+}
+
+.duration-type {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.duration-type i {
+    font-size: 1.8rem;
+    color: #006A67;
+}
+
+.duration-type strong {
+    font-family: 'Cairo', sans-serif;
+    color: #000B58;
+    font-size: 1.1rem;
+}
+
+.duration-time {
+    text-align: left;
+}
+
+.time-badge {
+    display: inline-block;
+    background: #006A67;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+.duration-time p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .cookie-purposes {
+        grid-template-columns: 1fr;
+    }
+    
+    .browser-guides {
+        grid-template-columns: 1fr;
+    }
+    
+    .third-party-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .impact-warning {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .duration-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .duration-time {
+        text-align: center;
     }
 }
