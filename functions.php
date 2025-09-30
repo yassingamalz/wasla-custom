@@ -877,4 +877,10 @@ function wasla_views_admin_page() {
     echo '</form>';
     echo '</div>';
 }
+
+/**
+ * Include Block Patterns
+ * Load custom Gutenberg block patterns for educational content
+ */
+require_once get_stylesheet_directory() . '/inc/block-patterns.php';
 ?>
