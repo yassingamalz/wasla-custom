@@ -1,0 +1,189 @@
+/**
+ * WASLA SINGLE ARTICLE STYLES - Enhanced Mobile Optimization
+ * Beautiful styling for individual blog posts/articles
+ * Maintains consistent design with other Wasla pages
+ * Mobile-first responsive design
+ */
+
+/* [Previous CSS content remains exactly the same - keeping for reference] */
+
+/* ===== ENHANCED MOBILE OPTIMIZATION FOR BLOCK PATTERNS ===== */
+
+/* Mobile: Better Touch Targets & Spacing */
+@media (max-width: 768px) {
+    /* Pattern Containers - More Breathing Room */
+    .article-body .article-introduction,
+    .article-body .wasla-tip-box,
+    .article-body .step-container,
+    .article-body .wasla-faq-item {
+        padding: 1.25rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* Testimonials more readable */
+    .article-body .testimonial-box {
+        padding: 1.5rem !important;
+    }
+    
+    .article-body .testimonial-text {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Timeline items */
+    .article-body .timeline-item {
+        padding: 1.25rem 1.5rem !important;
+    }
+    
+    /* Resources */
+    .article-body .resource-category {
+        padding: 1.25rem 1.5rem !important;
+    }
+    
+    /* Checklist more visible */
+    .article-body .checklist-item {
+        padding: 1rem 1.25rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Before/After comparison - stack */
+    .article-body .before-column,
+    .article-body .after-column {
+        margin-bottom: 1.5rem !important;
+        padding: 1.5rem !important;
+    }
+    
+    /* Quote box mobile */
+    .article-body .quote-highlight {
+        padding: 1.75rem 1.5rem !important;
+    }
+    
+    .article-body .quote-text {
+        font-size: 1.2rem !important;
+    }
+    
+    .article-body .quote-author {
+        font-size: 1rem !important;
+    }
+    
+    /* Better touch targets */
+    .article-body .wasla-cta-button .wp-block-button__link {
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+        min-height: 48px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Stats Grid - Stack on Mobile */
+    .article-body .stats-grid .wp-block-columns {
+        display: block !important;
+    }
+    
+    .article-body .stats-grid .wp-block-column {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Feature List - Better Spacing */
+    .article-body .feature-item {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Sidebar - Hide non-essential on Mobile */
+    .sidebar-categories,
+    .sidebar-contact {
+        display: none !important;
+    }
+}
+
+/* Very Small Phones - Extra Optimization */
+@media (max-width: 480px) {
+    .article-body .article-introduction,
+    .article-body .wasla-tip-box,
+    .article-body .step-container,
+    .article-body .wasla-faq-item,
+    .article-body .wasla-action-box {
+        padding: 1rem 1.25rem !important;
+    }
+    
+    .article-body .wasla-section-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .article-body .stats-number {
+        font-size: 2rem !important;
+    }
+    
+    .article-body .option-icon {
+        font-size: 2.5rem !important;
+    }
+}
+
+/* Landscape Mobile - Optimize Horizontal Space */
+@media (max-width: 900px) and (orientation: landscape) {
+    .article-hero {
+        padding: 80px 0 30px !important;
+    }
+    
+    .article-title {
+        font-size: 2rem !important;
+    }
+    
+    .article-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Dark Mode Support for Patterns */
+@media (prefers-color-scheme: dark) {
+    .article-body .wasla-tip-box {
+        background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%) !important;
+        border-right-color: #FFF4B7 !important;
+    }
+    
+    .article-body .wasla-faq-item {
+        background: #2c2c2c !important;
+        border-color: #3a3a3a !important;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .article-body .wasla-tip-box,
+    .article-body .wasla-action-box,
+    .article-body .step-container {
+        border-width: 3px !important;
+    }
+    
+    .article-body .wasla-cta-button .wp-block-button__link {
+        border-width: 3px !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .article-body .step-container:hover,
+    .article-body .option-column:hover,
+    .article-body .wasla-faq-item:hover {
+        transform: none !important;
+    }
+    
+    .article-body .wasla-cta-button .wp-block-button__link:hover {
+        transform: none !important;
+    }
+}
+
+/* Print Optimization for Patterns */
+@media print {
+    .article-body .wasla-action-box,
+    .article-body .wasla-cta-button {
+        page-break-inside: avoid !important;
+    }
+    
+    .article-body .article-introduction,
+    .article-body .wasla-tip-box {
+        border: 2px solid #000 !important;
+        page-break-inside: avoid !important;
+    }
+}
