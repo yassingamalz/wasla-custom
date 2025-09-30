@@ -832,5 +832,98 @@ css/single-article-mobile.css ✅ Advanced responsive design
 - **Accessible**: WCAG 2.1 AAA compliant
 
 ---
+# 📞 **Contact Information System - Update Log**
 
-[Keep all remaining content the same]
+## **October 1, 2025 (Night) - Complete Dynamic Contact System**
+
+### **✅ COMPLETED - Zero Hardcoded Contact Information**
+
+**Problem Solved**: Contact information (phone, WhatsApp) was still hardcoded in multiple templates (contact page, single.php sidebar). When fields were empty, content would disappear instead of showing "غير متوفر حالياً" message.
+
+### **Solution Implemented**:
+
+1. **Enhanced `wasla_contact_link()` Function**:
+   - Added `show_unavailable` parameter (default: true)
+   - Added `unavailable_text` parameter (default: 'غير متوفر حالياً')
+   - Smart fallback logic when contact fields are empty
+
+2. **Updated Templates**:
+   - `page-contact.php` - Replaced 3 hardcoded contact method cards
+   - `single.php` - Replaced hardcoded sidebar contact widget
+   - `footer.php` - Already using dynamic functions
+
+3. **Professional UX**:
+   - Shows "غير متوفر حالياً" when phone/WhatsApp empty
+   - Email always displays (required field)
+   - Links remain styled but non-clickable for unavailable items
+
+### **Files Modified**:
+```
+functions.php       - Enhanced wasla_contact_link() function
+page-contact.php    - Removed hardcoded contact cards
+single.php          - Removed hardcoded sidebar widget
+```
+
+### **Technical Implementation**:
+```php
+// Enhanced function parameters
+function wasla_contact_link( $type, $args = array() ) {
+    $defaults = array(
+        'show_unavailable' => true,
+        'unavailable_text' => 'غير متوفر حالياً',
+        // ... other parameters
+    );
+}
+
+// Usage in templates
+<?php echo wasla_contact_link( 'phone' ); ?>     // Shows phone or "غير متوفر حالياً"
+<?php echo wasla_contact_link( 'whatsapp' ); ?> // Shows WhatsApp or "غير متوفر حالياً"
+<?php echo wasla_contact_link( 'email' ); ?>    // Always shows email
+```
+
+### **Benefits**:
+- ✅ Zero hardcoded contact values in templates
+- ✅ Professional "Not Available" fallback messaging
+- ✅ Single source of truth (WordPress Customizer)
+- ✅ Consistent UX across entire site
+- ✅ Admin updates from one location
+- ✅ Clean, maintainable codebase
+
+### **Admin Instructions**:
+1. Go to **Appearance > Customize > معلومات التواصل**
+2. Update email (required), phone (optional), WhatsApp (optional), location
+3. Leave phone/WhatsApp empty to show "غير متوفر حالياً"
+4. Click **Publish** - changes apply instantly
+
+### **Status**: ✅ **CONTACT SYSTEM 100% DYNAMIC** - Zero hardcoded values remaining!
+
+---
+
+## **Commit Message**:
+```
+fix: remove all hardcoded contact information and add unavailable text fallback
+
+Replace remaining hardcoded contact information across all templates with dynamic functions. Add "غير متوفر حالياً" fallback message when phone or WhatsApp fields are empty.
+
+Contact System Enhancement:
+- Enhance wasla_contact_link() with show_unavailable and unavailable_text parameters
+- Add smart fallback logic to display "غير متوفر حالياً" for empty fields
+- Replace hardcoded contact cards in page-contact.php with dynamic functions
+- Replace hardcoded sidebar contact widget in single.php with dynamic functions
+- Maintain professional UX with contextual empty state messaging
+
+Files Updated:
+- functions.php: Enhanced wasla_contact_link() function
+- page-contact.php: Removed 3 hardcoded contact method cards
+- single.php: Removed hardcoded contact sidebar widget
+
+Benefits:
+- Zero hardcoded contact values remaining in templates
+- Professional "Not Available" messaging for empty fields
+- Single source of truth for all contact information
+- Admin controls all contact data from WordPress Customizer
+- Consistent UX across entire site
+
+Contact information now 100% dynamic across all templates.
+```
+

@@ -1022,4 +1022,173 @@ function wasla_sanitize_block_patterns() {
 }
 add_action( 'init', 'wasla_sanitize_block_patterns' );
 
+/**
+ * Centralized Contact Information Management
+ * Get contact information from WordPress options with fallbacks
+ */
+function wasla_get_contact_info( $type = 'email', $format = 'value' ) {
+    $contacts = array(
+        'email'    => get_option( 'wasla_contact_email', 'info@wasla-eg.com' ),
+        'phone'    => get_option( 'wasla_contact_phone', '' ),
+        'whatsapp' => get_option( 'wasla_contact_whatsapp', '' ),
+        'location' => get_option( 'wasla_contact_location', 'الجيزة، مصر' ),
+    );
+    
+    $value = isset( $contacts[$type] ) ? $contacts[$type] : '';
+    
+    if ( $format === 'link' ) {
+        switch ( $type ) {
+            case 'email':
+                return $value ? 'mailto:' . $value : '#';
+            case 'phone':
+                return $value ? 'tel:' . $value : '#';
+            case 'whatsapp':
+                return $value ? 'https://wa.me/' . preg_replace( '/[^0-9]/', '', $value ) : '#';
+            case 'location':
+                return '#';
+            default:
+                return '#';
+        }
+    }
+    
+    return $value;
+}
+
+/**
+ * Display formatted contact link
+ * Generates proper HTML for contact links with "Not Available" fallback
+ */
+function wasla_contact_link( $type, $args = array() ) {
+    $defaults = array(
+        'class'      => 'contact-item',
+        'icon_class' => '',
+        'show_icon'  => true,
+        'show_value' => true,
+        'show_unavailable' => true,
+        'unavailable_text' => 'غير متوفر حالياً',
+        'attributes' => array(),
+    );
+    
+    $args = wp_parse_args( $args, $defaults );
+    $value = wasla_get_contact_info( $type, 'value' );
+    $link = wasla_get_contact_info( $type, 'link' );
+    
+    if ( empty( $value ) ) {
+        if ( ! $args['show_unavailable'] ) {
+            return '';
+        }
+        $value = $args['unavailable_text'];
+        $link = '#';
+    }
+    
+    $icons = array(
+        'email'    => 'bi-envelope-fill',
+        'phone'    => 'bi-telephone-fill',
+        'whatsapp' => 'bi-whatsapp',
+        'location' => 'bi-geo-alt-fill',
+    );
+    
+    $icon = isset( $icons[$type] ) ? $icons[$type] : '';
+    if ( ! empty( $args['icon_class'] ) ) {
+        $icon = $args['icon_class'];
+    }
+    
+    $extra_attrs = '';
+    if ( $type === 'whatsapp' || $type === 'location' ) {
+        $extra_attrs = ' target="_blank" rel="noopener"';
+    }
+    
+    if ( ! empty( $args['attributes'] ) ) {
+        foreach ( $args['attributes'] as $attr => $attr_value ) {
+            $extra_attrs .= ' ' . esc_attr( $attr ) . '="' . esc_attr( $attr_value ) . '"';
+        }
+    }
+    
+    $output = '<a href="' . esc_url( $link ) . '" class="' . esc_attr( $args['class'] ) . '"' . $extra_attrs . '>';
+    
+    if ( $args['show_icon'] && ! empty( $icon ) ) {
+        $output .= '<i class="bi ' . esc_attr( $icon ) . '"></i>';
+    }
+    
+    if ( $args['show_value'] ) {
+        $output .= '<span>' . esc_html( $value ) . '</span>';
+    }
+    
+    $output .= '</a>';
+    
+    return $output;
+}
+
+/**
+ * Register Contact Settings in WordPress Options
+ * Allows admin to manage contact info from Appearance > Customize
+ */
+function wasla_register_contact_settings( $wp_customize ) {
+    $wp_customize->add_section( 'wasla_contact_info', array(
+        'title'    => 'معلومات التواصل',
+        'priority' => 30,
+    ) );
+    
+    // Email Setting
+    $wp_customize->add_setting( 'wasla_contact_email', array(
+        'default'           => 'info@wasla-eg.com',
+        'sanitize_callback' => 'sanitize_email',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_email', array(
+        'label'       => 'البريد الإلكتروني',
+        'description' => 'أدخل البريد الإلكتروني للتواصل',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'email',
+        'priority'    => 10,
+    ) );
+    
+    // Phone Setting
+    $wp_customize->add_setting( 'wasla_contact_phone', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_phone', array(
+        'label'       => 'رقم الهاتف',
+        'description' => 'أدخل رقم الهاتف (اختياري)',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'text',
+        'priority'    => 20,
+    ) );
+    
+    // WhatsApp Setting
+    $wp_customize->add_setting( 'wasla_contact_whatsapp', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_whatsapp', array(
+        'label'       => 'رقم واتساب',
+        'description' => 'أدخل رقم واتساب مع رمز الدولة (مثال: 201234567890)',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'text',
+        'priority'    => 30,
+    ) );
+    
+    // Location Setting
+    $wp_customize->add_setting( 'wasla_contact_location', array(
+        'default'           => 'الجيزة، مصر',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_location', array(
+        'label'       => 'الموقع',
+        'description' => 'أدخل موقع الشركة',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'text',
+        'priority'    => 40,
+    ) );
+}
+add_action( 'customize_register', 'wasla_register_contact_settings' );
+
 ?>

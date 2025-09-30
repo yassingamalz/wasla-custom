@@ -70,9 +70,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="footer-section">
 				<h4>تواصل معنا</h4>
 				<ul>
-					<li><a href="mailto:info@wasla-eg.com">info@wasla-eg.com</a></li>
-					<li><a href="tel:+201234567890">+20 123 456 7890</a></li>
-					<li><a href="#">الجيزة، مصر</a></li>
+					<li><a href="<?php echo esc_url( wasla_get_contact_info( 'email', 'link' ) ); ?>"><?php echo esc_html( wasla_get_contact_info( 'email' ) ); ?></a></li>
+					<?php if ( wasla_get_contact_info( 'phone' ) ) : ?>
+						<li><a href="<?php echo esc_url( wasla_get_contact_info( 'phone', 'link' ) ); ?>"><?php echo esc_html( wasla_get_contact_info( 'phone' ) ); ?></a></li>
+					<?php endif; ?>
+					<li><a href="#"><?php echo esc_html( wasla_get_contact_info( 'location' ) ); ?></a></li>
 				</ul>
 			</div>
 		</div>

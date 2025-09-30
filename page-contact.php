@@ -634,9 +634,7 @@ get_header(); ?>
                     </div>
                     <h3>البريد الإلكتروني</h3>
                     <p>راسلنا على بريدنا الإلكتروني وسنرد عليك خلال 24 ساعة</p>
-                    <a href="mailto:info@wasla-eg.com" class="contact-method-link">
-                        info@wasla-eg.com <i class="bi bi-arrow-left"></i>
-                    </a>
+                    <?php echo wasla_contact_link( 'email', array( 'class' => 'contact-method-link', 'icon_class' => 'bi-arrow-left', 'show_icon' => true ) ); ?>
                 </div>
                 <div class="contact-method-card">
                     <div class="contact-method-icon">
@@ -644,9 +642,7 @@ get_header(); ?>
                     </div>
                     <h3>واتساب</h3>
                     <p>تواصل معنا مباشرة عبر الواتساب للاستشارات السريعة</p>
-                    <a href="https://wa.me/201234567890" target="_blank" class="contact-method-link">
-                        +20 123 456 7890 <i class="bi bi-arrow-left"></i>
-                    </a>
+                    <?php echo wasla_contact_link( 'whatsapp', array( 'class' => 'contact-method-link', 'icon_class' => 'bi-arrow-left', 'show_icon' => true ) ); ?>
                 </div>
                 <div class="contact-method-card">
                     <div class="contact-method-icon">
@@ -654,9 +650,7 @@ get_header(); ?>
                     </div>
                     <h3>الهاتف</h3>
                     <p>اتصل بنا مباشرة من السبت للخميس من 9 صباحاً حتى 6 مساءً</p>
-                    <a href="tel:+201234567890" class="contact-method-link">
-                        +20 123 456 7890 <i class="bi bi-arrow-left"></i>
-                    </a>
+                    <?php echo wasla_contact_link( 'phone', array( 'class' => 'contact-method-link', 'icon_class' => 'bi-arrow-left', 'show_icon' => true ) ); ?>
                 </div>
             </div>
         </div>

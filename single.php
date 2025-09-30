@@ -339,18 +339,9 @@ get_header(); ?>
                     <div class="sidebar-widget sidebar-contact">
                         <h3><i class="bi bi-envelope"></i> تواصل معنا</h3>
                         <div class="contact-info">
-                            <a href="mailto:info@wasla-eg.com" class="contact-item">
-                                <i class="bi bi-envelope-fill"></i>
-                                <span>info@wasla-eg.com</span>
-                            </a>
-                            <a href="tel:+201234567890" class="contact-item">
-                                <i class="bi bi-telephone-fill"></i>
-                                <span>+20 123 456 7890</span>
-                            </a>
-                            <a href="https://wa.me/201234567890" target="_blank" class="contact-item" rel="noopener">
-                                <i class="bi bi-whatsapp"></i>
-                                <span>واتساب وصلة</span>
-                            </a>
+                            <?php echo wasla_contact_link( 'email' ); ?>
+                            <?php echo wasla_contact_link( 'phone' ); ?>
+                            <?php echo wasla_contact_link( 'whatsapp' ); ?>
                         </div>
                     </div>
                 </aside>

@@ -63,13 +63,31 @@ if ( apply_filters( 'astra_header_profile_gmpg_link', true ) ) {
 	<header class="wasla-header" role="banner">
 		<div class="wasla-container">
 			<div class="header-content">
-				<a href="<?php echo home_url(); ?>" class="wasla-logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-					<img src="https://wasla-eg.com/wp-content/uploads/2025/08/شعار-وصلة-white-1.png" 
-					     alt="وصلة - دليلك التعليمي" 
-					     class="logo-white">
-					<img src="https://antiquewhite-scorpion-378300.hostingersite.com/wp-content/uploads/2025/08/شعار-وصلة-white.png" 
-					     alt="وصلة - دليلك التعليمي" 
-					     class="logo-dark">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="wasla-logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+					<?php
+					// Use custom logos from Customizer if set, otherwise use uploaded logos
+					$logo_white = get_theme_mod( 'wasla_logo_white', 'https://wasla-eg.com/wp-content/uploads/2025/08/شعار-وصلة-white-1.png' );
+					$logo_dark = get_theme_mod( 'wasla_logo_dark', 'https://wasla-eg.com/wp-content/uploads/2025/08/شعار-وصلة-white.png' );
+					
+					// Check if logos exist in theme directory
+					$theme_logo_white = get_stylesheet_directory() . '/assets/images/logo-white.png';
+					$theme_logo_dark = get_stylesheet_directory() . '/assets/images/logo-dark.png';
+					
+					if ( file_exists( $theme_logo_white ) ) {
+						$logo_white = get_stylesheet_directory_uri() . '/assets/images/logo-white.png';
+					}
+					if ( file_exists( $theme_logo_dark ) ) {
+						$logo_dark = get_stylesheet_directory_uri() . '/assets/images/logo-dark.png';
+					}
+					?>
+					<img src="<?php echo esc_url( $logo_white ); ?>" 
+					     alt="<?php echo esc_attr( get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' ) ); ?>" 
+					     class="logo-white"
+					     onerror="this.style.display='none'">
+					<img src="<?php echo esc_url( $logo_dark ); ?>" 
+					     alt="<?php echo esc_attr( get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' ) ); ?>" 
+					     class="logo-dark"
+					     onerror="this.style.display='none'">
 				</a>
 				
 				<nav class="wasla-nav" role="navigation" aria-label="<?php esc_attr_e('القائمة الرئيسية', 'wasla'); ?>">
