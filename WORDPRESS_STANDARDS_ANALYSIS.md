@@ -76,8 +76,8 @@ astra_footer_after()   ✅ In footer.php
 | Terms of Service | ✅ **COMPLETED** | Legal protection, AdSense | ✅ DONE |
 | Cookie Policy | ✅ **COMPLETED** | GDPR compliance, AdSense | ✅ DONE |
 | About Us | ✅ **COMPLETED** | Trust & credibility, SEO | ✅ DONE |
-| Sitemap | ❌ Missing | User navigation | 🔶 OPTIONAL |
-| FAQ | ❌ Missing | User support | 🔶 OPTIONAL |
+| Sitemap | ✅ **COMPLETED** | User navigation, SEO | ✅ DONE |
+| FAQ | ✅ **COMPLETED** | User support, SEO | ✅ DONE |
 
 ### **3. Styling Architecture (COMPLETE!)** ✅
 ```php

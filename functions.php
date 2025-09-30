@@ -345,6 +345,22 @@ function wasla_enqueue_template_styles() {
                 WASLA_THEME_VERSION 
             );
         }
+        
+        // Sitemap and FAQ Pages CSS
+        if ($template === 'page-sitemap.php' || $template === 'page-faq.php') {
+            wp_enqueue_style( 
+                'wasla-legal-pages', 
+                get_stylesheet_directory_uri() . '/css/legal-pages.css', 
+                array( 'wasla-header-footer' ), 
+                WASLA_THEME_VERSION 
+            );
+            wp_enqueue_style( 
+                'wasla-sitemap-faq-pages', 
+                get_stylesheet_directory_uri() . '/css/sitemap-faq-pages.css', 
+                array( 'wasla-legal-pages' ), 
+                WASLA_THEME_VERSION 
+            );
+        }
     }
 }
 add_action( 'wp_enqueue_scripts', 'wasla_enqueue_template_styles' );
