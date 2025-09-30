@@ -337,7 +337,7 @@ function wasla_enqueue_template_styles() {
     if (is_page()) {
         $template = get_page_template_slug();
         
-        if ($template === 'page-privacy-policy.php' || $template === 'page-terms-of-service.php' || $template === 'page-cookie-policy.php') {
+        if ($template === 'page-privacy-policy.php' || $template === 'page-terms-of-service.php' || $template === 'page-cookie-policy.php' || $template === 'page-about-us.php') {
             wp_enqueue_style( 
                 'wasla-legal-pages', 
                 get_stylesheet_directory_uri() . '/css/legal-pages.css', 
