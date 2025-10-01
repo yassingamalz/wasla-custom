@@ -302,12 +302,20 @@ add_action( 'admin_notices', 'wasla_admin_notices' );
  * Enqueue Template-Specific Styles
  */
 function wasla_enqueue_template_styles() {
+    // Article Components CSS (Global - available everywhere)
+    wp_enqueue_style( 
+        'wasla-article-components', 
+        get_stylesheet_directory_uri() . '/css/article-components.css', 
+        array( 'wasla-header-footer' ), 
+        WASLA_THEME_VERSION 
+    );
+    
     // Single Article CSS
     if (is_single()) {
         wp_enqueue_style( 
             'wasla-single-article', 
             get_stylesheet_directory_uri() . '/css/single-article.css', 
-            array( 'wasla-header-footer' ), 
+            array( 'wasla-header-footer', 'wasla-article-components' ), 
             WASLA_THEME_VERSION 
         );
         

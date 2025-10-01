@@ -1,0 +1,1060 @@
+/**
+ * Article Components CSS
+ * Reusable CSS classes for article content creation
+ * 
+ * @package Wasla
+ * @since 1.0.0
+ * 
+ * Usage: Add these classes directly to HTML elements in article content
+ * This file provides a comprehensive styling system for consistent article formatting
+ */
+
+/* ============================================
+   COLOR VARIABLES
+   ============================================ */
+:root {
+    /* Brand Colors */
+    --wasla-primary: #000B58;
+    --wasla-secondary: #003161;
+    --wasla-tertiary: #006A67;
+    --wasla-accent: #FFF4B7;
+    
+    /* Background Colors */
+    --bg-light-blue: #f0f8ff;
+    --bg-light-gray: #f8f9fa;
+    --bg-cream: #FFF4B7;
+    --bg-white: #ffffff;
+    
+    /* Text Colors */
+    --text-dark: #2c3e50;
+    --text-gray: #555;
+    --text-light: #777;
+    
+    /* Status Colors */
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
+    
+    /* Border Colors */
+    --border-light: #e0e0e0;
+    --border-medium: #ccc;
+    --border-dark: #999;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+
+/* ============================================
+   SECTION HEADINGS
+   ============================================ */
+
+/* Section Heading (H2) with icon */
+.wasla-section-heading {
+    color: var(--wasla-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--wasla-tertiary);
+}
+
+/* Sub-section Heading (H3) */
+.wasla-subsection-heading {
+    color: var(--wasla-secondary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Minor Heading (H4) */
+.wasla-minor-heading {
+    color: var(--wasla-secondary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/* ============================================
+   TEXT STYLES
+   ============================================ */
+
+/* Lead paragraph (intro text) */
+.wasla-lead-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* Emphasized text */
+.wasla-emphasis {
+    font-weight: 700;
+    color: var(--wasla-primary);
+}
+
+/* Highlighted text */
+.wasla-highlight {
+    background-color: var(--wasla-accent);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* Small meta text */
+.wasla-meta-text {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+
+/* ============================================
+   INTRODUCTION BOX
+   ============================================ */
+
+.wasla-intro-box {
+    background: linear-gradient(135deg, var(--bg-light-blue) 0%, #e8f4f8 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    border-right: 4px solid var(--wasla-tertiary);
+}
+
+.wasla-intro-box h2 {
+    color: var(--wasla-primary);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.wasla-intro-box p {
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+}
+
+
+/* ============================================
+   INFO BOXES (Different Types)
+   ============================================ */
+
+/* Base box style */
+.wasla-box {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    border-right: 4px solid;
+}
+
+/* Info Box (Blue) */
+.wasla-info-box {
+    background-color: #e3f2fd;
+    border-right-color: var(--info);
+}
+
+.wasla-info-box .box-icon {
+    color: var(--info);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Tip Box (Cream/Yellow) */
+.wasla-tip-box {
+    background-color: var(--bg-cream);
+    border-right-color: var(--wasla-tertiary);
+}
+
+.wasla-tip-box .box-icon {
+    color: var(--wasla-tertiary);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Warning Box (Orange) */
+.wasla-warning-box {
+    background-color: #fff3cd;
+    border-right-color: var(--warning);
+}
+
+.wasla-warning-box .box-icon {
+    color: var(--warning);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Success Box (Green) */
+.wasla-success-box {
+    background-color: #d4edda;
+    border-right-color: var(--success);
+}
+
+.wasla-success-box .box-icon {
+    color: var(--success);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Danger Box (Red) */
+.wasla-danger-box {
+    background-color: #f8d7da;
+    border-right-color: var(--danger);
+}
+
+.wasla-danger-box .box-icon {
+    color: var(--danger);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Note Box (Gray) */
+.wasla-note-box {
+    background-color: var(--bg-light-gray);
+    border-right-color: var(--border-dark);
+}
+
+.wasla-note-box .box-icon {
+    color: var(--text-gray);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Box Title */
+.wasla-box-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Box Content */
+.wasla-box-content p {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+/* Card Grid Container */
+.wasla-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* Two-column grid */
+.wasla-card-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* Three-column grid */
+.wasla-card-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* Four-column grid */
+.wasla-card-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* Base Card Style */
+.wasla-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wasla-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Card */
+.wasla-icon-card {
+    text-align: center;
+}
+
+.wasla-icon-card .card-icon {
+    font-size: 3rem;
+    color: var(--wasla-tertiary);
+    margin-bottom: 1rem;
+}
+
+.wasla-icon-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--wasla-primary);
+    margin-bottom: 0.5rem;
+}
+
+.wasla-icon-card .card-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Numbered Card */
+.wasla-numbered-card {
+    position: relative;
+    padding-right: 4rem;
+}
+
+.wasla-numbered-card .card-number {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--wasla-tertiary);
+    opacity: 0.3;
+}
+
+.wasla-numbered-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--wasla-primary);
+    margin-bottom: 0.5rem;
+}
+
+.wasla-numbered-card .card-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Feature Card (with checkmark) */
+.wasla-feature-card .card-icon {
+    font-size: 2rem;
+    color: var(--success);
+    margin-bottom: 0.5rem;
+}
+
+.wasla-feature-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--wasla-primary);
+    margin-bottom: 0.5rem;
+}
+
+.wasla-feature-card .card-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+
+/* ============================================
+   LISTS
+   ============================================ */
+
+/* Checkmark List */
+.wasla-checklist {
+    list-style: none;
+    padding-right: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.wasla-checklist li {
+    padding-right: 2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.wasla-checklist li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: var(--success);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Icon List */
+.wasla-icon-list {
+    list-style: none;
+    padding-right: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.wasla-icon-list li {
+    padding-right: 2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.wasla-icon-list li::before {
+    content: "→";
+    position: absolute;
+    right: 0;
+    color: var(--wasla-tertiary);
+    font-weight: 700;
+}
+
+/* Numbered List (styled) */
+.wasla-numbered-list {
+    counter-reset: wasla-counter;
+    list-style: none;
+    padding-right: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.wasla-numbered-list li {
+    counter-increment: wasla-counter;
+    padding-right: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.wasla-numbered-list li::before {
+    content: counter(wasla-counter);
+    position: absolute;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--wasla-tertiary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+/* Primary Button */
+.wasla-btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--wasla-primary) 0%, var(--wasla-secondary) 100%);
+    color: white;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.wasla-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 11, 88, 0.3);
+    color: white;
+}
+
+/* Secondary Button */
+.wasla-btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-white);
+    color: var(--wasla-primary);
+    border: 2px solid var(--wasla-primary);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.wasla-btn-secondary:hover {
+    background: var(--wasla-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* CTA Button (large) */
+.wasla-btn-cta {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--wasla-tertiary) 0%, #004d4a 100%);
+    color: white;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.wasla-btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 106, 103, 0.4);
+    color: white;
+}
+
+
+/* ============================================
+   CALL-TO-ACTION BOX
+   ============================================ */
+
+.wasla-cta-box {
+    background: linear-gradient(135deg, var(--wasla-primary) 0%, var(--wasla-secondary) 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+}
+
+.wasla-cta-box h2,
+.wasla-cta-box h3 {
+    color: var(--wasla-accent);
+    margin-bottom: 1rem;
+}
+
+.wasla-cta-box p {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+
+.wasla-faq-item {
+    background: var(--bg-light-gray);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-right: 3px solid var(--wasla-tertiary);
+}
+
+.wasla-faq-question {
+    color: var(--wasla-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.wasla-faq-question::before {
+    content: "❓";
+    margin-left: 0.5rem;
+}
+
+.wasla-faq-answer {
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   STATS / METRICS
+   ============================================ */
+
+.wasla-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.wasla-stat-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--bg-light-blue);
+    border-radius: var(--radius-md);
+}
+
+.wasla-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--wasla-tertiary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.wasla-stat-label {
+    color: var(--text-gray);
+    font-size: 1rem;
+}
+
+
+/* ============================================
+   TABLE STYLES
+   ============================================ */
+
+.wasla-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-lg) 0;
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wasla-table thead {
+    background: linear-gradient(135deg, var(--wasla-primary) 0%, var(--wasla-secondary) 100%);
+    color: white;
+}
+
+.wasla-table th {
+    padding: 1rem;
+    text-align: right;
+    font-weight: 700;
+}
+
+.wasla-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    text-align: right;
+}
+
+.wasla-table tbody tr:hover {
+    background-color: var(--bg-light-blue);
+}
+
+.wasla-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ============================================
+   COMPARISON TABLE
+   ============================================ */
+
+.wasla-comparison-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.wasla-comparison-column {
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wasla-comparison-column.featured {
+    border: 3px solid var(--wasla-tertiary);
+    transform: scale(1.05);
+}
+
+.wasla-comparison-header {
+    background: linear-gradient(135deg, var(--wasla-primary) 0%, var(--wasla-secondary) 100%);
+    color: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.wasla-comparison-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.wasla-comparison-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--wasla-accent);
+}
+
+.wasla-comparison-features {
+    list-style: none;
+    padding: 0;
+}
+
+.wasla-comparison-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.wasla-comparison-features li:last-child {
+    border-bottom: none;
+}
+
+
+/* ============================================
+   QUOTE / BLOCKQUOTE
+   ============================================ */
+
+.wasla-quote {
+    background: var(--bg-light-gray);
+    border-right: 4px solid var(--wasla-tertiary);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--radius-md);
+    font-style: italic;
+}
+
+.wasla-quote p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.wasla-quote-author {
+    font-weight: 700;
+    color: var(--wasla-primary);
+    font-style: normal;
+}
+
+.wasla-quote-author::before {
+    content: "— ";
+}
+
+
+/* ============================================
+   STEP-BY-STEP GUIDE
+   ============================================ */
+
+.wasla-steps-container {
+    margin: var(--spacing-lg) 0;
+}
+
+.wasla-step {
+    display: flex;
+    margin-bottom: var(--spacing-lg);
+    align-items: flex-start;
+}
+
+.wasla-step-number {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--wasla-tertiary) 0%, #004d4a 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+.wasla-step-content {
+    flex: 1;
+}
+
+.wasla-step-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--wasla-primary);
+    margin-bottom: 0.5rem;
+}
+
+.wasla-step-description {
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+
+.wasla-timeline {
+    position: relative;
+    padding-right: 2rem;
+    margin: var(--spacing-lg) 0;
+}
+
+.wasla-timeline::before {
+    content: '';
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--wasla-tertiary);
+}
+
+.wasla-timeline-item {
+    position: relative;
+    padding-right: 3rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.wasla-timeline-marker {
+    position: absolute;
+    right: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--wasla-tertiary);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--wasla-tertiary);
+}
+
+.wasla-timeline-content {
+    background: var(--bg-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wasla-timeline-date {
+    color: var(--wasla-tertiary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.wasla-timeline-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--wasla-primary);
+    margin-bottom: 0.5rem;
+}
+
+.wasla-timeline-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+
+/* ============================================
+   ACCORDION / COLLAPSIBLE
+   ============================================ */
+
+.wasla-accordion-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    overflow: hidden;
+}
+
+.wasla-accordion-header {
+    background: var(--bg-light-gray);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.wasla-accordion-header:hover {
+    background: var(--bg-light-blue);
+}
+
+.wasla-accordion-title {
+    font-weight: 700;
+    color: var(--wasla-primary);
+}
+
+.wasla-accordion-icon {
+    color: var(--wasla-tertiary);
+    transition: transform 0.3s ease;
+}
+
+.wasla-accordion-content {
+    padding: var(--spacing-md);
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   BADGES / TAGS
+   ============================================ */
+
+.wasla-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0.25rem;
+}
+
+.wasla-badge-primary {
+    background: var(--wasla-primary);
+    color: white;
+}
+
+.wasla-badge-secondary {
+    background: var(--wasla-tertiary);
+    color: white;
+}
+
+.wasla-badge-success {
+    background: var(--success);
+    color: white;
+}
+
+.wasla-badge-warning {
+    background: var(--warning);
+    color: white;
+}
+
+.wasla-badge-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.wasla-badge-info {
+    background: var(--info);
+    color: white;
+}
+
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.wasla-progress-container {
+    background: var(--bg-light-gray);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 1.5rem;
+    margin: var(--spacing-md) 0;
+}
+
+.wasla-progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, var(--wasla-tertiary) 0%, #004d4a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    transition: width 0.5s ease;
+}
+
+
+/* ============================================
+   DIVIDERS / SEPARATORS
+   ============================================ */
+
+.wasla-divider {
+    height: 3px;
+    background: linear-gradient(to left, var(--wasla-tertiary), var(--wasla-primary));
+    border: none;
+    margin: var(--spacing-xl) 0;
+    border-radius: 2px;
+}
+
+.wasla-divider-light {
+    height: 1px;
+    background: var(--border-light);
+    border: none;
+    margin: var(--spacing-lg) 0;
+}
+
+
+/* ============================================
+   SPACERS
+   ============================================ */
+
+.wasla-spacer-xs {
+    height: var(--spacing-xs);
+}
+
+.wasla-spacer-sm {
+    height: var(--spacing-sm);
+}
+
+.wasla-spacer-md {
+    height: var(--spacing-md);
+}
+
+.wasla-spacer-lg {
+    height: var(--spacing-lg);
+}
+
+.wasla-spacer-xl {
+    height: var(--spacing-xl);
+}
+
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .wasla-hide-mobile {
+        display: none !important;
+    }
+    
+    .wasla-card-grid,
+    .wasla-card-grid-2,
+    .wasla-card-grid-3,
+    .wasla-card-grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .wasla-comparison-table {
+        grid-template-columns: 1fr;
+    }
+    
+    .wasla-numbered-card {
+        padding-right: var(--spacing-md);
+    }
+    
+    .wasla-numbered-card .card-number {
+        position: static;
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+    .wasla-hide-desktop {
+        display: none !important;
+    }
+}
+
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .wasla-cta-box,
+    .wasla-btn-primary,
+    .wasla-btn-secondary,
+    .wasla-btn-cta {
+        display: none;
+    }
+    
+    .wasla-card,
+    .wasla-box {
+        break-inside: avoid;
+    }
+}
