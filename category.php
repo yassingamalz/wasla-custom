@@ -128,7 +128,7 @@ get_header(); ?>
                                 $post_id = get_the_ID();
                                 $categories = get_the_category();
                                 $primary_category = !empty($categories) ? $categories[0] : null;
-                                $reading_time = max(1, ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200));
+                                $reading_time = wasla_get_reading_time();
                                 $comment_count = get_comments_number();
                             ?>
                                 <article class="category-post-card" itemscope itemtype="https://schema.org/Article">

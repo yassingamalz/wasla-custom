@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'WASLA_THEME_VERSION', '1.0.0' );
+define( 'WASLA_READING_SPEED', 200 ); // Words per minute for reading time calculation
+define( 'WASLA_EXCERPT_LENGTH', 25 ); // Default excerpt length in words
+define( 'WASLA_EXCERPT_MORE', '...' ); // Excerpt ellipsis
 
 /**
  * Enqueue parent theme and custom styles
@@ -99,14 +102,28 @@ add_filter( 'body_class', 'wasla_custom_body_class' );
  * Custom excerpt settings
  */
 function wasla_excerpt_length( $length ) {
-    return 25;
+    return WASLA_EXCERPT_LENGTH;
 }
 add_filter( 'excerpt_length', 'wasla_excerpt_length', 999 );
 
 function wasla_excerpt_more( $more ) {
-    return '...';
+    return WASLA_EXCERPT_MORE;
 }
 add_filter( 'excerpt_more', 'wasla_excerpt_more' );
+
+/**
+ * Calculate reading time for post content
+ * 
+ * @param string $content Post content
+ * @return int Reading time in minutes
+ */
+function wasla_get_reading_time( $content = null ) {
+    if ( $content === null ) {
+        $content = get_the_content();
+    }
+    $word_count = str_word_count( wp_strip_all_tags( $content ) );
+    return max( 1, ceil( $word_count / WASLA_READING_SPEED ) );
+}
 
 /**
  * Custom Navigation Walker for dropdown menus

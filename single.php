@@ -58,7 +58,7 @@ get_header(); ?>
                 
                 <div class="article-meta-item">
                     <i class="bi bi-clock"></i>
-                    <span><?php echo max(1, ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200)); ?> دقائق قراءة</span>
+                    <span><?php echo wasla_get_reading_time(); ?> دقائق قراءة</span>
                 </div>
                 
                 <div class="article-meta-item">
@@ -412,7 +412,7 @@ get_header(); ?>
                                     </span>
                                     <span class="article-read-time">
                                         <i class="bi bi-clock"></i>
-                                        <?php echo max(1, ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200)); ?> دقائق
+                                        <?php echo wasla_get_reading_time(); ?> دقائق
                                     </span>
                                 </div>
                             </div>
