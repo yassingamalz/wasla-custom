@@ -478,7 +478,7 @@ function wasla_initialize_post_views( $post_id ) {
     $existing_views = get_post_meta( $post_id, '_wasla_view_count', true );
     
     if ( empty( $existing_views ) ) {
-        $initial_views = rand( 100, 500 );
+        $initial_views = rand( 200, 500 );
         update_post_meta( $post_id, '_wasla_view_count', $initial_views );
     }
 }
@@ -491,22 +491,37 @@ function wasla_set_initial_views_on_publish( $post_id, $post, $update ) {
 add_action( 'wp_insert_post', 'wasla_set_initial_views_on_publish', 10, 3 );
 
 function wasla_track_post_view( $post_id ) {
-    if ( is_single() && ! is_user_logged_in() && ! is_admin() ) {
-        $current_views = get_post_meta( $post_id, '_wasla_view_count', true );
-        $current_views = $current_views ? intval( $current_views ) : 0;
-        
+    if ( ! is_user_logged_in() && ! is_admin() ) {
         $visitor_key = 'wasla_viewed_' . $post_id;
         
-        if ( ! isset( $_COOKIE[$visitor_key] ) && ! headers_sent() ) {
-            $new_views = $current_views + 1;
+        // Check if cookie exists
+        if ( ! isset( $_COOKIE[$visitor_key] ) ) {
+            $current_views = get_post_meta( $post_id, '_wasla_view_count', true );
+            
+            if ( empty( $current_views ) ) {
+                $current_views = rand( 200, 500 );
+                update_post_meta( $post_id, '_wasla_view_count', $current_views );
+            }
+            
+            $new_views = intval( $current_views ) + 1;
             update_post_meta( $post_id, '_wasla_view_count', $new_views );
+            
+            // Set cookie - expires in 24 hours
+            setcookie( $visitor_key, '1', time() + DAY_IN_SECONDS, '/', '', false, true );
         }
     }
 }
 
 function wasla_get_post_views( $post_id ) {
     $views = get_post_meta( $post_id, '_wasla_view_count', true );
-    return $views ? intval( $views ) : rand( 100, 500 );
+    
+    if ( empty( $views ) ) {
+        $initial_views = rand( 200, 500 );
+        update_post_meta( $post_id, '_wasla_view_count', $initial_views );
+        return $initial_views;
+    }
+    
+    return intval( $views );
 }
 
 function wasla_auto_track_views() {
@@ -515,7 +530,7 @@ function wasla_auto_track_views() {
         wasla_track_post_view( $post->ID );
     }
 }
-add_action( 'wp_head', 'wasla_auto_track_views' );
+add_action( 'template_redirect', 'wasla_auto_track_views' );
 
 /**
  * Author Display Management
