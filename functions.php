@@ -303,6 +303,16 @@ function wasla_enqueue_template_styles() {
         );
     }
     
+    // Category Pages CSS
+    if (is_category()) {
+        wp_enqueue_style( 
+            'wasla-category-pages', 
+            get_stylesheet_directory_uri() . '/css/category-pages.css', 
+            array( 'wasla-header-footer' ), 
+            WASLA_THEME_VERSION 
+        );
+    }
+    
     // Archive Pages CSS (author, date, search archives)
     if (is_archive() && !is_category() && !is_tag()) {
         wp_enqueue_style( 
