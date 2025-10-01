@@ -96,6 +96,8 @@ get_header(); ?>
                         </div>
                     <?php endif; ?>
 
+                    <?php wasla_header_ad(); ?>
+
                     <!-- Article Content Body -->
                     <article class="article-body" itemscope itemtype="https://schema.org/Article">
                         <!-- Schema.org structured data -->
@@ -249,6 +251,8 @@ get_header(); ?>
                         </nav>
                     <?php endif; ?>
 
+                    <?php wasla_content_ad(); ?>
+
                     <!-- Comments Section -->
                     <?php 
                     // Load comments template if comments are open or we have at least one comment
@@ -260,6 +264,7 @@ get_header(); ?>
 
                 <!-- Article Sidebar -->
                 <aside class="article-sidebar" role="complementary">
+                    <?php wasla_sidebar_ad( 'top' ); ?>
                     <!-- Quick Navigation -->
                     <div class="sidebar-widget sidebar-toc">
                         <h3><i class="bi bi-list-ul"></i> محتويات المقال</h3>
@@ -268,6 +273,8 @@ get_header(); ?>
                             <p class="toc-placeholder">جاري تحميل قائمة المحتويات...</p>
                         </div>
                     </div>
+
+                    <?php wasla_sidebar_ad( 'mid' ); ?>
 
                     <!-- Related Posts -->
                     <div class="sidebar-widget sidebar-related">
@@ -305,6 +312,8 @@ get_header(); ?>
                         </ul>
                     </div>
                     
+                    <?php wasla_sidebar_ad( 'bottom' ); ?>
+
                     <!-- Categories -->
                     <div class="sidebar-widget sidebar-categories">
                         <h3><i class="bi bi-folder"></i> التصنيفات</h3>
@@ -348,6 +357,8 @@ get_header(); ?>
             </div>
         </div>
     </section>
+
+    <?php wasla_footer_ad(); ?>
 
     <!-- Related Articles Section -->
     <section class="related-articles">

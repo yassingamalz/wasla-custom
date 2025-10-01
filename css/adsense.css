@@ -1,0 +1,170 @@
+/**
+ * WASLA ADSENSE STYLES
+ * Professional ad container styling with Wasla branding
+ */
+
+.wasla-ad-container {
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    max-width: 100%;
+}
+
+.wasla-ad-container::before {
+    content: 'إعلان';
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom: 0.75rem;
+    font-family: 'Tajawal', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wasla-ad-header {
+    max-width: 728px;
+    margin: 2rem auto 3rem;
+}
+
+.wasla-ad-sidebar {
+    margin: 2rem 0;
+    max-width: 300px;
+}
+
+.wasla-ad-sidebar-top {
+    margin-top: 0;
+}
+
+.wasla-ad-sidebar-mid {
+    margin: 2rem 0;
+}
+
+.wasla-ad-sidebar-bottom {
+    margin-bottom: 0;
+}
+
+.wasla-ad-content {
+    margin: 3rem auto;
+    max-width: 100%;
+    padding: 1.5rem;
+}
+
+.wasla-ad-footer {
+    max-width: 728px;
+    margin: 3rem auto 2rem;
+}
+
+.wasla-ad-infeed {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: transparent;
+    border: 1px dashed #e9ecef;
+    border-radius: 8px;
+}
+
+.wasla-ad-infeed::before {
+    content: 'إعلان مقترح';
+    font-size: 0.7rem;
+}
+
+.adsbygoogle {
+    display: block;
+    margin: 0 auto;
+}
+
+.wasla-ad-container .adsbygoogle {
+    min-height: 90px;
+}
+
+.wasla-ad-sidebar .adsbygoogle {
+    min-height: 250px;
+    min-width: 300px;
+}
+
+.wasla-ad-header .adsbygoogle {
+    min-height: 90px;
+}
+
+.wasla-ad-footer .adsbygoogle {
+    min-height: 90px;
+}
+
+.wasla-ad-container .adsbygoogle[data-ad-status="unfilled"] {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .wasla-ad-container {
+        margin: 1.5rem auto;
+        padding: 0.75rem;
+    }
+    
+    .wasla-ad-header {
+        max-width: 320px;
+    }
+    
+    .wasla-ad-sidebar {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .wasla-ad-footer {
+        max-width: 320px;
+    }
+    
+    .wasla-ad-content {
+        padding: 1rem;
+        margin: 2rem auto;
+    }
+    
+    .wasla-ad-sidebar-top,
+    .wasla-ad-sidebar-mid,
+    .wasla-ad-sidebar-bottom {
+        margin: 1.5rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .wasla-ad-container {
+        margin: 1rem auto;
+        padding: 0.5rem;
+    }
+    
+    .wasla-ad-container::before {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .wasla-ad-header,
+    .wasla-ad-footer {
+        max-width: 300px;
+    }
+}
+
+@media print {
+    .wasla-ad-container {
+        display: none !important;
+    }
+}
+
+.wasla-ad-container:focus-within {
+    outline: 2px solid #006A67;
+    outline-offset: 2px;
+}
+
+.wasla-ad-container {
+    contain: layout style;
+    will-change: auto;
+}
+
+.wasla-ad-container[data-lazy="true"] {
+    visibility: hidden;
+}
+
+.wasla-ad-container[data-lazy="true"].loaded {
+    visibility: visible;
+}

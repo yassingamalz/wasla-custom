@@ -79,6 +79,8 @@ get_header(); ?>
             </div>
         </section>
 
+        <?php wasla_header_ad(); ?>
+
         <!-- Category Content -->
         <section class="category-content">
             <div class="wasla-container">
@@ -122,7 +124,14 @@ get_header(); ?>
                         <div class="category-posts-grid">
                             <?php 
                             while ( have_posts() ) : 
-                                the_post(); 
+                                the_post();
+                                
+                                // Insert in-feed ad after every 3rd post
+                                if ( $wp_query->current_post > 0 && ( $wp_query->current_post + 1 ) % 3 === 0 ) {
+                                    echo '<div class="infeed-ad-container">';
+                                    wasla_infeed_ad();
+                                    echo '</div>';
+                                }
                                 
                                 // Get post data
                                 $post_id = get_the_ID();
@@ -249,6 +258,8 @@ get_header(); ?>
                             <?php endwhile; ?>
                         </div>
 
+                        <?php wasla_footer_ad(); ?>
+
                         <!-- Pagination -->
                         <?php if ( get_the_posts_pagination() || paginate_links() ) : ?>
                             <div class="category-pagination">
@@ -266,6 +277,7 @@ get_header(); ?>
 
                     <!-- Category Sidebar -->
                     <aside class="category-sidebar" role="complementary">
+                        <?php wasla_sidebar_ad( 'top' ); ?>
                         <!-- Search Widget -->
                         <div class="sidebar-widget search-widget">
                             <h3 class="widget-title">
@@ -286,6 +298,8 @@ get_header(); ?>
                                 </div>
                             </form>
                         </div>
+
+                        <?php wasla_sidebar_ad( 'bottom' ); ?>
 
                         <!-- Related Categories -->
                         <div class="sidebar-widget categories-widget">

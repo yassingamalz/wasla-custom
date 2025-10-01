@@ -951,6 +951,28 @@ function wasla_views_admin_page() {
 require_once get_stylesheet_directory() . '/inc/block-patterns.php';
 
 /**
+ * Include AdSense Integration
+ */
+if ( file_exists( get_stylesheet_directory() . '/inc/adsense.php' ) ) {
+    require_once get_stylesheet_directory() . '/inc/adsense.php';
+}
+
+/**
+ * Enqueue AdSense CSS
+ */
+function wasla_enqueue_adsense_styles() {
+    if ( function_exists( 'wasla_is_adsense_enabled' ) && wasla_is_adsense_enabled() ) {
+        wp_enqueue_style( 
+            'wasla-adsense', 
+            get_stylesheet_directory_uri() . '/css/adsense.css', 
+            array( 'wasla-style' ), 
+            WASLA_THEME_VERSION 
+        );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'wasla_enqueue_adsense_styles' );
+
+/**
  * Force Full Width Layout for All Pages
  * Overrides Astra's default boxed layout settings
  */
