@@ -75,9 +75,7 @@ function wasla_load_block_patterns() {
         'stats-grid',
         'feature-list',
         'checklist',
-        'progress-tracker',
-        'before-after',
-        'testimonial'
+        'tutorial-walkthrough'
     );
     
     foreach ($components as $component) {
