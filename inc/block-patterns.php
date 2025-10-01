@@ -33,6 +33,14 @@ function wasla_register_block_pattern_categories() {
                 'label' => __('عناصر وصلة القابلة لإعادة الاستخدام', 'wasla')
             )
         );
+        
+        // Patterns category (for organisms)
+        register_block_pattern_category(
+            'wasla-patterns',
+            array(
+                'label' => __('أنماط وصلة المتقدمة', 'wasla')
+            )
+        );
     }
 }
 add_action('init', 'wasla_register_block_pattern_categories');
@@ -64,8 +72,9 @@ function wasla_load_block_patterns() {
         }
     }
     
-    // Reusable Components
+    // Reusable Components (Molecules & Atoms)
     $components = array(
+        // Existing components
         'introduction-box',
         'tip-box',
         'warning-box',
@@ -75,7 +84,20 @@ function wasla_load_block_patterns() {
         'stats-grid',
         'feature-list',
         'checklist',
-        'tutorial-walkthrough'
+        'tutorial-walkthrough',
+        
+        // New Phase 1 components
+        'card-icon',
+        'card-numbered',
+        'card-feature',
+        'box-question',
+        'grid-2col',
+        'grid-3col',
+        'grid-4col',
+        'section-standard',
+        'hero-article',
+        'section-grid-cards',
+        'faq-section'
     );
     
     foreach ($components as $component) {
