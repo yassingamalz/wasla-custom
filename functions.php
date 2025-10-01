@@ -1028,10 +1028,14 @@ add_action( 'init', 'wasla_sanitize_block_patterns' );
  */
 function wasla_get_contact_info( $type = 'email', $format = 'value' ) {
     $contacts = array(
-        'email'    => get_option( 'wasla_contact_email', 'info@wasla-eg.com' ),
-        'phone'    => get_option( 'wasla_contact_phone', '' ),
-        'whatsapp' => get_option( 'wasla_contact_whatsapp', '' ),
-        'location' => get_option( 'wasla_contact_location', 'الجيزة، مصر' ),
+        'email'         => get_option( 'wasla_contact_email', 'info@wasla-eg.com' ),
+        'email_privacy' => get_option( 'wasla_contact_email_privacy', 'privacy@wasla-eg.com' ),
+        'email_legal'   => get_option( 'wasla_contact_email_legal', 'legal@wasla-eg.com' ),
+        'email_support' => get_option( 'wasla_contact_email_support', 'support@wasla-eg.com' ),
+        'phone'         => get_option( 'wasla_contact_phone', '' ),
+        'whatsapp'      => get_option( 'wasla_contact_whatsapp', '' ),
+        'location'      => get_option( 'wasla_contact_location', 'الجيزة، مصر' ),
+        'hours'         => get_option( 'wasla_contact_hours', 'الأحد - الخميس: 9:00 ص - 6:00 م' ),
     );
     
     $value = isset( $contacts[$type] ) ? $contacts[$type] : '';
@@ -1039,12 +1043,16 @@ function wasla_get_contact_info( $type = 'email', $format = 'value' ) {
     if ( $format === 'link' ) {
         switch ( $type ) {
             case 'email':
+            case 'email_privacy':
+            case 'email_legal':
+            case 'email_support':
                 return $value ? 'mailto:' . $value : '#';
             case 'phone':
                 return $value ? 'tel:' . $value : '#';
             case 'whatsapp':
                 return $value ? 'https://wa.me/' . preg_replace( '/[^0-9]/', '', $value ) : '#';
             case 'location':
+            case 'hours':
                 return '#';
             default:
                 return '#';
@@ -1187,6 +1195,66 @@ function wasla_register_contact_settings( $wp_customize ) {
         'section'     => 'wasla_contact_info',
         'type'        => 'text',
         'priority'    => 40,
+    ) );
+    
+    // Privacy Email Setting
+    $wp_customize->add_setting( 'wasla_contact_email_privacy', array(
+        'default'           => 'privacy@wasla-eg.com',
+        'sanitize_callback' => 'sanitize_email',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_email_privacy', array(
+        'label'       => 'البريد الإلكتروني للخصوصية',
+        'description' => 'للاستفسارات عن الخصوصية وملفات تعريف الارتباط',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'email',
+        'priority'    => 50,
+    ) );
+    
+    // Legal Email Setting
+    $wp_customize->add_setting( 'wasla_contact_email_legal', array(
+        'default'           => 'legal@wasla-eg.com',
+        'sanitize_callback' => 'sanitize_email',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_email_legal', array(
+        'label'       => 'البريد الإلكتروني القانوني',
+        'description' => 'للاستفسارات القانونية وشروط الخدمة',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'email',
+        'priority'    => 60,
+    ) );
+    
+    // Support Email Setting
+    $wp_customize->add_setting( 'wasla_contact_email_support', array(
+        'default'           => 'support@wasla-eg.com',
+        'sanitize_callback' => 'sanitize_email',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_email_support', array(
+        'label'       => 'البريد الإلكتروني للدعم الفني',
+        'description' => 'للدعم الفني والمساعدة التقنية',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'email',
+        'priority'    => 70,
+    ) );
+    
+    // Business Hours Setting
+    $wp_customize->add_setting( 'wasla_contact_hours', array(
+        'default'           => 'الأحد - الخميس: 9:00 ص - 6:00 م',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( 'wasla_contact_hours', array(
+        'label'       => 'ساعات العمل',
+        'description' => 'أدخل ساعات العمل أو الرد',
+        'section'     => 'wasla_contact_info',
+        'type'        => 'text',
+        'priority'    => 80,
     ) );
 }
 add_action( 'customize_register', 'wasla_register_contact_settings' );

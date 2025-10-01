@@ -197,7 +197,7 @@ get_header(); ?>
                             
                             <p>
                                 لممارسة أي من هذه الحقوق، يرجى التواصل معنا عبر 
-                                <a href="mailto:privacy@wasla-eg.com">privacy@wasla-eg.com</a>
+                                <a href="<?php echo esc_url( wasla_get_contact_info( 'email_privacy', 'link' ) ); ?>"><?php echo esc_html( wasla_get_contact_info( 'email_privacy' ) ); ?></a>
                             </p>
                         </section>
 
@@ -253,7 +253,7 @@ get_header(); ?>
                                     <i class="bi bi-envelope-fill"></i>
                                     <div class="contact-details">
                                         <strong>البريد الإلكتروني:</strong>
-                                        <p><a href="mailto:privacy@wasla-eg.com">privacy@wasla-eg.com</a></p>
+                                        <p><a href="<?php echo esc_url( wasla_get_contact_info( 'email_privacy', 'link' ) ); ?>"><?php echo esc_html( wasla_get_contact_info( 'email_privacy' ) ); ?></a></p>
                                     </div>
                                 </div>
                                 
@@ -261,7 +261,7 @@ get_header(); ?>
                                     <i class="bi bi-geo-alt-fill"></i>
                                     <div class="contact-details">
                                         <strong>العنوان:</strong>
-                                        <p>القاهرة، جمهورية مصر العربية</p>
+                                        <p><?php echo esc_html( wasla_get_contact_info( 'location' ) ); ?></p>
                                     </div>
                                 </div>
                                 
@@ -269,7 +269,14 @@ get_header(); ?>
                                     <i class="bi bi-telephone-fill"></i>
                                     <div class="contact-details">
                                         <strong>الهاتف:</strong>
-                                        <p><a href="tel:+201234567890">+20 123 456 7890</a></p>
+                                        <p><?php 
+                                        $phone = wasla_get_contact_info( 'phone' );
+                                        if ( $phone ) {
+                                            echo '<a href="' . esc_url( wasla_get_contact_info( 'phone', 'link' ) ) . '">' . esc_html( $phone ) . '</a>';
+                                        } else {
+                                            echo 'غير متوفر حالياً';
+                                        }
+                                        ?></p>
                                     </div>
                                 </div>
                                 
@@ -277,7 +284,7 @@ get_header(); ?>
                                     <i class="bi bi-clock-fill"></i>
                                     <div class="contact-details">
                                         <strong>ساعات الرد:</strong>
-                                        <p>الأحد - الخميس: 9:00 ص - 6:00 م</p>
+                                        <p><?php echo esc_html( wasla_get_contact_info( 'hours' ) ); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -322,7 +329,7 @@ get_header(); ?>
                             تحتاج مساعدة؟
                         </h3>
                         <p>إذا كان لديك أي استفسار حول خصوصيتك أو بياناتك، لا تتردد في التواصل معنا.</p>
-                        <a href="mailto:privacy@wasla-eg.com" class="support-btn">
+                        <a href="<?php echo esc_url( wasla_get_contact_info( 'email_privacy', 'link' ) ); ?>" class="support-btn">
                             <i class="bi bi-envelope"></i>
                             راسلنا
                         </a>

@@ -350,7 +350,14 @@ get_header(); ?>
                                     <i class="bi bi-telephone-fill"></i>
                                     <div class="contact-details">
                                         <strong>الهاتف:</strong>
-                                        <p><a href="tel:+201234567890">+20 123 456 7890</a></p>
+                                        <p><?php 
+                                        $phone = wasla_get_contact_info( 'phone' );
+                                        if ( $phone ) {
+                                            echo '<a href="' . esc_url( wasla_get_contact_info( 'phone', 'link' ) ) . '">' . esc_html( $phone ) . '</a>';
+                                        } else {
+                                            echo 'غير متوفر حالياً';
+                                        }
+                                        ?></p>
                                     </div>
                                 </div>
                                 

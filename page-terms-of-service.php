@@ -319,7 +319,7 @@ get_header(); ?>
                                     <i class="bi bi-envelope-fill"></i>
                                     <div class="contact-details">
                                         <strong>البريد الإلكتروني:</strong>
-                                        <p><a href="mailto:legal@wasla-eg.com">legal@wasla-eg.com</a></p>
+                                        <p><a href="<?php echo esc_url( wasla_get_contact_info( 'email_legal', 'link' ) ); ?>"><?php echo esc_html( wasla_get_contact_info( 'email_legal' ) ); ?></a></p>
                                     </div>
                                 </div>
                                 
@@ -327,7 +327,7 @@ get_header(); ?>
                                     <i class="bi bi-geo-alt-fill"></i>
                                     <div class="contact-details">
                                         <strong>العنوان:</strong>
-                                        <p>القاهرة، جمهورية مصر العربية</p>
+                                        <p><?php echo esc_html( wasla_get_contact_info( 'location' ) ); ?></p>
                                     </div>
                                 </div>
                                 
@@ -335,7 +335,14 @@ get_header(); ?>
                                     <i class="bi bi-telephone-fill"></i>
                                     <div class="contact-details">
                                         <strong>الهاتف:</strong>
-                                        <p><a href="tel:+201234567890">+20 123 456 7890</a></p>
+                                        <p><?php 
+                                        $phone = wasla_get_contact_info( 'phone' );
+                                        if ( $phone ) {
+                                            echo '<a href="' . esc_url( wasla_get_contact_info( 'phone', 'link' ) ) . '">' . esc_html( $phone ) . '</a>';
+                                        } else {
+                                            echo 'غير متوفر حالياً';
+                                        }
+                                        ?></p>
                                     </div>
                                 </div>
                                 
@@ -343,7 +350,7 @@ get_header(); ?>
                                     <i class="bi bi-clock-fill"></i>
                                     <div class="contact-details">
                                         <strong>ساعات العمل:</strong>
-                                        <p>الأحد - الخميس: 9:00 ص - 6:00 م</p>
+                                        <p><?php echo esc_html( wasla_get_contact_info( 'hours' ) ); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -402,7 +409,7 @@ get_header(); ?>
                             استفسارات قانونية؟
                         </h3>
                         <p>إذا كان لديك أي استفسار قانوني أو تحتاج للتوضيح، نحن هنا لمساعدتك.</p>
-                        <a href="mailto:legal@wasla-eg.com" class="support-btn">
+                        <a href="<?php echo esc_url( wasla_get_contact_info( 'email_legal', 'link' ) ); ?>" class="support-btn">
                             <i class="bi bi-envelope"></i>
                             راسل الفريق القانوني
                         </a>
