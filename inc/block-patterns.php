@@ -97,7 +97,14 @@ function wasla_load_block_patterns() {
         'section-standard',
         'hero-article',
         'section-grid-cards',
-        'faq-section'
+        'faq-section',
+        
+        // Micro components
+        'button',
+        'breadcrumb',
+        'timeline-item',
+        'accordion-item',
+        'progress-bar'
     );
     
     foreach ($components as $component) {
