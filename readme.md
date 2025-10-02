@@ -131,7 +131,8 @@ wp-content/themes/
             ├── INFOBOX_TEMPLATES.md (20 info box styles)
             ├── CARD_TEMPLATES.md (20 card styles)
             ├── GRID_TEMPLATES.md (20 grid layouts)
-            └── HERO_TEMPLATES.md (20 hero sections)
+            ├── HERO_TEMPLATES.md (20 hero sections)
+            └── FAQ_TEMPLATES.md (20 FAQ patterns)
 ```
 
 ---
@@ -166,7 +167,7 @@ wp-content/themes/
 - ✅ Gutenberg block patterns (8 article templates)
 - ✅ **Reusable components (21 elements)**
 - ✅ **CSS Classes System** (60+ reusable classes)
-- ✅ **Template Library** (140 ready-to-copy templates)
+- ✅ **Template Library** (160 ready-to-copy templates)
   - 20 Paragraph styles
   - 20 Heading styles
   - 20 List styles
@@ -174,6 +175,7 @@ wp-content/themes/
   - 20 Card styles
   - 20 Grid layouts
   - 20 Hero sections
+  - 20 FAQ patterns
 - ✅ Visual editing (no HTML required)
 - ✅ Professional styling (automatic Wasla branding)
 
@@ -285,6 +287,16 @@ Located in: `templates/HERO_TEMPLATES.md`
 | Advanced Heroes | 6 | Two-Column, Stats, Badge, Highlight, Minimal, Checklist |
 | Special Heroes | 8 | Quote, Compact, Multi-CTA, Video, Search, Timeline, Article Intro, Full Image |
 
+### **FAQ Section Templates** (20 styles) ⭐ NEW
+Located in: `templates/FAQ_TEMPLATES.md`
+
+| Category | Count | Examples |
+|---|---|---|
+| Basic FAQ | 5 | Single Q&A, List Answer, Section, Two-Column, Numbered |
+| Advanced FAQ | 5 | Categories, Compact, With Tips, With Warning, With Links |
+| Specialized FAQ | 5 | Inline, With Table, Minimal, Accordion, With CTA |
+| Layout Variations | 5 | Three-Column, Related Links, With Stats, End Section, Full Template |
+
 **Usage**: Copy templates directly from `.md` files into WordPress Code Editor
 
 ---
@@ -372,13 +384,13 @@ Located in: `templates/HERO_TEMPLATES.md`
 
 **Development Status**: Production-ready, content creation phase 🚀
 
-**Component Library**: 21 components + 140 templates ready ⭐
+**Component Library**: 21 components + 160 templates ready ⭐
 
 **Next Priority**: Create 30-50 articles using template library 📝
 
 ---
 
 *Last Updated: October 2, 2025*  
-*Theme Version: 1.2*  
-*Components: 21 | Templates: 140*  
+*Theme Version: 1.3*  
+*Components: 21 | Templates: 160*  
 *Wasla Development Team*
