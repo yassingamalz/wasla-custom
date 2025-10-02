@@ -129,7 +129,8 @@ wp-content/themes/
             ├── HEADING_TEMPLATES.md (20 heading styles)
             ├── LIST_TEMPLATES.md (20 list styles)
             ├── INFOBOX_TEMPLATES.md (20 info box styles)
-            └── CARD_TEMPLATES.md (20 card styles)
+            ├── CARD_TEMPLATES.md (20 card styles)
+            └── GRID_TEMPLATES.md (20 grid layouts)
 ```
 
 ---
@@ -164,11 +165,13 @@ wp-content/themes/
 - ✅ Gutenberg block patterns (8 article templates)
 - ✅ **Reusable components (21 elements)**
 - ✅ **CSS Classes System** (60+ reusable classes)
-- ✅ **Template Library** (80 ready-to-copy templates)
+- ✅ **Template Library** (120 ready-to-copy templates)
   - 20 Paragraph styles
   - 20 Heading styles
   - 20 List styles
   - 20 Info Box styles
+  - 20 Card styles
+  - 20 Grid layouts
 - ✅ Visual editing (no HTML required)
 - ✅ Professional styling (automatic Wasla branding)
 
@@ -260,6 +263,17 @@ Located in: `templates/CARD_TEMPLATES.md`
 | Social Proof | 3 | Testimonial, Timeline, Profile |
 | Advanced Cards | 7 | CTA, Category, Quick Fact, Comparison, Resource, Event, Alert |
 
+### **Grid Layout Templates** (20 styles) ⭐ NEW
+Located in: `templates/GRID_TEMPLATES.md`
+
+| Category | Count | Examples |
+|---|---|---|
+| Basic Grids | 3 | 2-col, 3-col, 4-col text layouts |
+| Card Grids | 3 | Icon cards, Numbered cards in grids |
+| Asymmetric Grids | 2 | 33/67, 40/60 split layouts |
+| Specialized Grids | 6 | Stats, Comparison, Features, Pricing, Image+Text, Timeline |
+| Content Grids | 6 | Categories, Testimonials, Team, Services, FAQ, Resources |
+
 **Usage**: Copy templates directly from `.md` files into WordPress Code Editor
 
 ---
@@ -347,7 +361,7 @@ Located in: `templates/CARD_TEMPLATES.md`
 
 **Development Status**: Production-ready, content creation phase 🚀
 
-**Component Library**: 21 components + 80 templates ready ⭐
+**Component Library**: 21 components + 120 templates ready ⭐
 
 **Next Priority**: Create 30-50 articles using template library 📝
 
@@ -355,5 +369,5 @@ Located in: `templates/CARD_TEMPLATES.md`
 
 *Last Updated: October 2, 2025*  
 *Theme Version: 1.2*  
-*Components: 21 | Templates: 80*  
+*Components: 21 | Templates: 120*  
 *Wasla Development Team*
