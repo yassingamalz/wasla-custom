@@ -48,6 +48,7 @@ wp-content/themes/wasla-custom-astra/
     ├── CHANGELOG.md (resolved issues history)
     ├── ARTICLE_USE_GUIDE.md (complete component reference)
     ├── PARAGRAPH_TEMPLATES.md (20 paragraph styles)
+    ├── HEADING_TEMPLATES.md (20 heading styles)
     ├── CSS_CLASSES_GUIDE.md (CSS classes reference)
     └── COMPONENTS_PLAN.md (components roadmap)
 ```
