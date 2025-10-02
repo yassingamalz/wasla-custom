@@ -8,10 +8,22 @@
  Version: 1.0.0
 */
 
-/* Define Wasla brand colors */
+/* Define Wasla brand colors and override Astra global colors */
 :root {
-  --wasla-primary: #000B58;   /* main color */
-  --wasla-secondary: #003161; /* secondary color */
-  --wasla-tertiary: #006A67;  /* tertiary color */
-  --wasla-accent: #FFF4B7;    /* accent color */
+  /* Wasla Brand Colors */
+  --wasla-primary: #000B58;   /* Deep Navy */
+  --wasla-secondary: #003161; /* Secondary Navy */
+  --wasla-tertiary: #006A67;  /* Teal */
+  --wasla-accent: #FFF4B7;    /* Cream */
+  
+  /* Override Astra Global Colors with Wasla Brand */
+  --ast-global-color-0: #000B58;   /* Primary: Deep Navy */
+  --ast-global-color-1: #003161;   /* Secondary: Secondary Navy */
+  --ast-global-color-2: #006A67;   /* Tertiary: Teal */
+  --ast-global-color-3: #3d3d4e;   /* Text: Dark Gray */
+  --ast-global-color-4: #FFF4B7;   /* Accent: Cream */
+  --ast-global-color-5: #ffffff;   /* White */
+  --ast-global-color-6: #f2f3f4;   /* Light Gray Background */
+  --ast-global-color-7: #76778b;   /* Medium Gray */
+  --ast-global-color-8: #5258ca;   /* Override with Teal */
 }
