@@ -529,14 +529,22 @@
 
 .wasla-cta-box h2,
 .wasla-cta-box h3 {
-    color: var(--wasla-accent);
+    color: var(--wasla-accent) !important;
     margin-bottom: 1rem;
 }
 
 .wasla-cta-box p {
-    color: var(--wasla-accent);
+    color: white !important;
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+}
+
+.wasla-cta-box .wp-block-buttons {
+    margin-bottom: 0;
+}
+
+.wasla-cta-box .wp-block-button {
+    margin-bottom: 0;
 }
 
 .wasla-cta-box .wp-block-button__link {
@@ -548,6 +556,17 @@
     font-size: 1.1rem !important;
     border-radius: var(--radius-md) !important;
     text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.wasla-cta-box .wp-block-button__link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 106, 103, 0.4) !important;
+    background: linear-gradient(135deg, var(--wasla-tertiary) 0%, #004d4a 100%) !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
 }
 
 
