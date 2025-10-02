@@ -46,7 +46,8 @@ wp-content/themes/wasla-custom-astra/
 └── Documentation
     ├── readme.md (this file)
     ├── CHANGELOG.md (resolved issues history)
-    ├── ARTICLE_USE_GUIDE.md ⭐ NEW (complete component reference)
+    ├── ARTICLE_USE_GUIDE.md (complete component reference)
+    ├── PARAGRAPH_TEMPLATES.md (20 paragraph styles)
     ├── CSS_CLASSES_GUIDE.md (CSS classes reference)
     └── COMPONENTS_PLAN.md (components roadmap)
 ```
