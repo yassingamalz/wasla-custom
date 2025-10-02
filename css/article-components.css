@@ -534,9 +534,20 @@
 }
 
 .wasla-cta-box p {
-    color: white;
+    color: var(--wasla-accent);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+}
+
+.wasla-cta-box .wp-block-button__link {
+    background: linear-gradient(135deg, var(--wasla-tertiary) 0%, #004d4a 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 1rem 2rem !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    border-radius: var(--radius-md) !important;
+    text-decoration: none !important;
 }
 
 
