@@ -130,7 +130,8 @@ wp-content/themes/
             ├── LIST_TEMPLATES.md (20 list styles)
             ├── INFOBOX_TEMPLATES.md (20 info box styles)
             ├── CARD_TEMPLATES.md (20 card styles)
-            └── GRID_TEMPLATES.md (20 grid layouts)
+            ├── GRID_TEMPLATES.md (20 grid layouts)
+            └── HERO_TEMPLATES.md (20 hero sections)
 ```
 
 ---
@@ -165,13 +166,14 @@ wp-content/themes/
 - ✅ Gutenberg block patterns (8 article templates)
 - ✅ **Reusable components (21 elements)**
 - ✅ **CSS Classes System** (60+ reusable classes)
-- ✅ **Template Library** (120 ready-to-copy templates)
+- ✅ **Template Library** (140 ready-to-copy templates)
   - 20 Paragraph styles
   - 20 Heading styles
   - 20 List styles
   - 20 Info Box styles
   - 20 Card styles
   - 20 Grid layouts
+  - 20 Hero sections
 - ✅ Visual editing (no HTML required)
 - ✅ Professional styling (automatic Wasla branding)
 
@@ -274,6 +276,15 @@ Located in: `templates/GRID_TEMPLATES.md`
 | Specialized Grids | 6 | Stats, Comparison, Features, Pricing, Image+Text, Timeline |
 | Content Grids | 6 | Categories, Testimonials, Team, Services, FAQ, Resources |
 
+### **Hero Section Templates** (20 styles) ⭐ NEW
+Located in: `templates/HERO_TEMPLATES.md`
+
+| Category | Count | Examples |
+|---|---|---|
+| Basic Heroes | 6 | Simple, Icon, Gradient, Breadcrumb, Meta, CTA |
+| Advanced Heroes | 6 | Two-Column, Stats, Badge, Highlight, Minimal, Checklist |
+| Special Heroes | 8 | Quote, Compact, Multi-CTA, Video, Search, Timeline, Article Intro, Full Image |
+
 **Usage**: Copy templates directly from `.md` files into WordPress Code Editor
 
 ---
@@ -361,7 +372,7 @@ Located in: `templates/GRID_TEMPLATES.md`
 
 **Development Status**: Production-ready, content creation phase 🚀
 
-**Component Library**: 21 components + 120 templates ready ⭐
+**Component Library**: 21 components + 140 templates ready ⭐
 
 **Next Priority**: Create 30-50 articles using template library 📝
 
@@ -369,5 +380,5 @@ Located in: `templates/GRID_TEMPLATES.md`
 
 *Last Updated: October 2, 2025*  
 *Theme Version: 1.2*  
-*Components: 21 | Templates: 120*  
+*Components: 21 | Templates: 140*  
 *Wasla Development Team*
