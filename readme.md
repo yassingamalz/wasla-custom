@@ -128,7 +128,8 @@ wp-content/themes/
             ├── PARAGRAPH_TEMPLATES.md (20 paragraph styles)
             ├── HEADING_TEMPLATES.md (20 heading styles)
             ├── LIST_TEMPLATES.md (20 list styles)
-            └── INFOBOX_TEMPLATES.md (20 info box styles)
+            ├── INFOBOX_TEMPLATES.md (20 info box styles)
+            └── CARD_TEMPLATES.md (20 card styles)
 ```
 
 ---
@@ -248,6 +249,16 @@ Located in: `templates/INFOBOX_TEMPLATES.md`
 | Basic Boxes | 8 | Tip, Warning, Success, Info, Note, Danger, Intro, Question |
 | Inline Boxes | 4 | Quick Tip, Quick Warning, Quick Success, Quick Info |
 | Advanced Boxes | 8 | List Tips, List Warnings, Requirements, Steps, Key Points, Pro Tip, Dates, Did You Know |
+
+### **Card Templates** (20 styles) ⭐ NEW
+Located in: `templates/CARD_TEMPLATES.md`
+
+| Category | Count | Examples |
+|---|---|---|
+| Basic Cards | 5 | Icon, Numbered, Feature, Simple, Icon+Link |
+| Specialized Cards | 5 | Stat, Image, Highlight, Service, Price |
+| Social Proof | 3 | Testimonial, Timeline, Profile |
+| Advanced Cards | 7 | CTA, Category, Quick Fact, Comparison, Resource, Event, Alert |
 
 **Usage**: Copy templates directly from `.md` files into WordPress Code Editor
 
