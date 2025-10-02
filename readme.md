@@ -127,7 +127,8 @@ wp-content/themes/
         └── templates/ (ready-to-copy templates)
             ├── PARAGRAPH_TEMPLATES.md (20 paragraph styles)
             ├── HEADING_TEMPLATES.md (20 heading styles)
-            └── LIST_TEMPLATES.md (20 list styles)
+            ├── LIST_TEMPLATES.md (20 list styles)
+            └── INFOBOX_TEMPLATES.md (20 info box styles)
 ```
 
 ---
@@ -162,10 +163,11 @@ wp-content/themes/
 - ✅ Gutenberg block patterns (8 article templates)
 - ✅ **Reusable components (21 elements)**
 - ✅ **CSS Classes System** (60+ reusable classes)
-- ✅ **Template Library** (60 ready-to-copy templates)
+- ✅ **Template Library** (80 ready-to-copy templates)
   - 20 Paragraph styles
   - 20 Heading styles
   - 20 List styles
+  - 20 Info Box styles
 - ✅ Visual editing (no HTML required)
 - ✅ Professional styling (automatic Wasla branding)
 
@@ -237,6 +239,15 @@ Located in: `templates/LIST_TEMPLATES.md`
 | Styled Lists | 5 | Navy Checks, Stars, Two-Column, Spaced, Bold |
 | Advanced Lists | 5 | Nested, Highlighted, Emoji, Cream Box, Process |
 | Special Purpose | 5 | Compact, Pros, Cons, Features, Timeline |
+
+### **Info Box Templates** (20 styles) ⭐ NEW
+Located in: `templates/INFOBOX_TEMPLATES.md`
+
+| Category | Count | Examples |
+|---|---|---|
+| Basic Boxes | 8 | Tip, Warning, Success, Info, Note, Danger, Intro, Question |
+| Inline Boxes | 4 | Quick Tip, Quick Warning, Quick Success, Quick Info |
+| Advanced Boxes | 8 | List Tips, List Warnings, Requirements, Steps, Key Points, Pro Tip, Dates, Did You Know |
 
 **Usage**: Copy templates directly from `.md` files into WordPress Code Editor
 
@@ -325,7 +336,7 @@ Located in: `templates/LIST_TEMPLATES.md`
 
 **Development Status**: Production-ready, content creation phase 🚀
 
-**Component Library**: 21 components + 60 templates ready ⭐
+**Component Library**: 21 components + 80 templates ready ⭐
 
 **Next Priority**: Create 30-50 articles using template library 📝
 
@@ -333,5 +344,5 @@ Located in: `templates/LIST_TEMPLATES.md`
 
 *Last Updated: October 2, 2025*  
 *Theme Version: 1.2*  
-*Components: 21 | Templates: 60*  
+*Components: 21 | Templates: 80*  
 *Wasla Development Team*
