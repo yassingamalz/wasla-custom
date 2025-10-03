@@ -86,3 +86,152 @@ a {
 small {
     font-weight: 400 !important;
 }
+
+/* ===========================================
+   PRESERVE COMPONENT STYLING
+   Prevent typography rules from breaking components
+   =========================================== */
+
+/* Card Numbers - Keep teal color and styling */
+.card-number {
+    color: var(--wasla-tertiary) !important;
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    opacity: 0.3 !important;
+}
+
+/* Numbered list circles - Keep green background and size */
+.wasla-numbered-list li::before {
+    width: 2rem !important;
+    height: 2rem !important;
+    font-size: 1rem !important;
+    color: white !important;
+    font-weight: 700 !important;
+    background: var(--success) !important;
+    line-height: 2rem !important;
+}
+
+/* Step numbers in tutorial/steps */
+.wasla-step-number {
+    width: 3rem !important;
+    height: 3rem !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    line-height: 3rem !important;
+}
+
+/* Timeline markers */
+.wasla-timeline-marker {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+/* Stats numbers */
+.wasla-stat-number {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: var(--wasla-tertiary) !important;
+}
+
+/* Box icons */
+.box-icon,
+.card-icon {
+    font-size: 1.5rem !important;
+    font-weight: normal !important;
+}
+
+/* Icon card icons */
+.wasla-icon-card .card-icon {
+    font-size: 3rem !important;
+    font-weight: normal !important;
+}
+
+/* Preserve heading sizes in components */
+.wasla-section-heading {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+}
+
+.wasla-subsection-heading {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+}
+
+.wasla-minor-heading {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
+
+/* Card titles */
+.card-title,
+.wasla-card .card-title,
+.wasla-icon-card .card-title,
+.wasla-numbered-card .card-title,
+.wasla-feature-card .card-title {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+}
+
+/* Box titles */
+.wasla-box-title {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+}
+
+/* FAQ questions */
+.wasla-faq-question {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+}
+
+/* Timeline titles */
+.wasla-timeline-title {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+}
+
+/* Step titles */
+.wasla-step-title {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+}
+
+/* Accordion titles */
+.wasla-accordion-title {
+    font-weight: 700 !important;
+}
+
+/* Lead text */
+.wasla-lead-text {
+    font-size: 1.15rem !important;
+    line-height: 1.8 !important;
+}
+
+/* Meta text */
+.wasla-meta-text {
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+}
+
+/* Stat labels */
+.wasla-stat-label {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+}
+
+/* Badges */
+.wasla-badge {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+}
+
+/* Quote text */
+.wasla-quote p {
+    font-size: 1.2rem !important;
+    line-height: 1.8 !important;
+}
+
+/* Quote author */
+.wasla-quote-author {
+    font-weight: 700 !important;
+}

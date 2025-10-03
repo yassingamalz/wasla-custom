@@ -90,6 +90,53 @@
         margin-bottom: 1rem !important;
     }
     
+    /* Numbered Cards - Ensure visibility on mobile */
+    .wasla-numbered-card {
+        padding-right: 1rem !important;
+        position: relative !important;
+    }
+    
+    .wasla-numbered-card .card-number {
+        position: absolute !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        font-size: 2.5rem !important;
+        color: var(--wasla-tertiary) !important;
+        opacity: 0.3 !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Card grids - Stack on mobile */
+    .wasla-card-grid,
+    .wasla-card-grid-2,
+    .wasla-card-grid-3,
+    .wasla-card-grid-4 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Numbered list - Ensure proper sizing */
+    .wasla-numbered-list li::before {
+        width: 2rem !important;
+        height: 2rem !important;
+        font-size: 1rem !important;
+        line-height: 2rem !important;
+    }
+    
+    /* Stats numbers - Keep visible */
+    .wasla-stat-number {
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Icon cards - Center on mobile */
+    .wasla-icon-card {
+        text-align: center !important;
+    }
+    
+    .wasla-icon-card .card-icon {
+        font-size: 3rem !important;
+    }
+    
     /* Sidebar - Hide non-essential on Mobile */
     .sidebar-categories,
     .sidebar-contact {
