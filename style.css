@@ -27,3 +27,62 @@
   --ast-global-color-7: #76778b;   /* Medium Gray */
   --ast-global-color-8: #5258ca;   /* Override with Teal */
 }
+
+/* ===========================================
+   TYPOGRAPHY ENHANCEMENTS - Better Readability
+   Added: October 3, 2025
+   =========================================== */
+body {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+    line-height: 1.75 !important;
+}
+
+/* Article content paragraphs */
+.entry-content p,
+.wp-block-paragraph,
+article p {
+    font-weight: 500 !important;
+    line-height: 1.8 !important;
+    color: #333 !important;
+    font-size: 17px !important;
+}
+
+/* Headings - Keep them bold */
+h1, h2, h3, h4, h5, h6,
+.entry-title,
+.wp-block-heading {
+    font-weight: 700 !important;
+}
+
+/* Lists */
+ul li, 
+ol li,
+.entry-content ul li,
+.entry-content ol li {
+    font-weight: 500 !important;
+    line-height: 1.7 !important;
+    color: #333 !important;
+}
+
+/* Links - Keep them semi-bold for visibility */
+a {
+    font-weight: 600 !important;
+}
+
+/* Article content wrapper */
+.entry-content {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+}
+
+/* Meta text, dates, small info - slightly lighter */
+.entry-meta,
+.posted-on,
+.byline,
+.comments-link,
+small {
+    font-weight: 400 !important;
+}
