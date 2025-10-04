@@ -1093,7 +1093,7 @@
     }
     
     .article-hero {
-        padding: 100px 0 40px;
+        padding: 100px 0 25px;
     }
     
     .article-title {
@@ -1114,6 +1114,7 @@
         grid-row: 1;
         width: auto;
         white-space: nowrap;
+        margin-bottom: 0.9rem;
     }
     
     /* Row 2: Author (left) and Date (right) */
