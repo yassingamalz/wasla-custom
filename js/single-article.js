@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!tocContainer || !articleBody) return;
         
-        // Find all headings (h2, h3, h4) in the article
-        const headings = articleBody.querySelectorAll('h2, h3, h4');
+        // Find only main section headings (h2) in the article
+        const headings = articleBody.querySelectorAll('h2');
         
         if (headings.length === 0) {
             tocContainer.innerHTML = '<p class="no-toc">لا توجد عناوين فرعية في هذا المقال</p>';
