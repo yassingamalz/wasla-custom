@@ -1108,10 +1108,12 @@
         row-gap: 0.75rem;
     }
     
-    /* Row 1: Category badge spans right column only */
+    /* Row 1: Category badge with flexible width for mobile */
     .article-meta-item.article-category {
         grid-column: 1;
         grid-row: 1;
+        width: auto;
+        white-space: nowrap;
     }
     
     /* Row 2: Author (left) and Date (right) */
