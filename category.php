@@ -25,7 +25,7 @@ get_header(); ?>
                 <nav class="category-breadcrumb" aria-label="Breadcrumb">
                     <a href="<?php echo esc_url( home_url() ); ?>"><?php _e( 'الرئيسية', 'wasla' ); ?></a>
                     <span class="breadcrumb-separator">/</span>
-                    <a href="<?php echo esc_url( get_permalink(get_option('page_for_posts')) ?: home_url('/blog') ); ?>"><?php _e( 'المدونة', 'wasla' ); ?></a>
+                    <a href="<?php echo esc_url( home_url('/blog') ); ?>"><?php _e( 'المدونة', 'wasla' ); ?></a>
                     <span class="breadcrumb-separator">/</span>
                     <span class="breadcrumb-current"><?php single_cat_title(); ?></span>
                 </nav>

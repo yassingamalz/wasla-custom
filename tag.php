@@ -23,7 +23,7 @@ get_header(); ?>
                 <nav class="tag-breadcrumb" aria-label="Breadcrumb">
                     <a href="<?php echo home_url(); ?>">الرئيسية</a>
                     <span class="breadcrumb-separator">/</span>
-                    <a href="<?php echo get_permalink(get_option('page_for_posts')) ?: home_url('/blog'); ?>">المدونة</a>
+                    <a href="<?php echo esc_url( home_url('/blog') ); ?>"><?php _e( 'المدونة', 'wasla' ); ?></a>
                     <span class="breadcrumb-separator">/</span>
                     <span class="breadcrumb-current"><?php single_tag_title(); ?></span>
                 </nav>
