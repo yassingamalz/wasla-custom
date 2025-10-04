@@ -71,6 +71,18 @@ a {
     font-weight: 600 !important;
 }
 
+/* Fix pagination and article link colors */
+.blog-pagination .page-numbers,
+.article-body a {
+    color: #000B58 !important;
+}
+
+.blog-pagination .page-numbers:hover,
+.blog-pagination .page-numbers.current,
+.article-body a:hover {
+    color: #006A67 !important;
+}
+
 /* Article content wrapper */
 .entry-content {
     font-size: 17px !important;
