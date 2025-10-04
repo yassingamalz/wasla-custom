@@ -45,26 +45,27 @@ get_header(); ?>
                         <span><?php echo esc_html($categories[0]->name); ?></span>
                     </div>
                 <?php endif; ?>
-                
-                <div class="article-meta-item">
-                    <i class="bi bi-calendar3"></i>
-                    <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('j F Y'); ?></time>
-                </div>
-                
+
                 <div class="article-meta-item">
                     <i class="bi bi-person-circle"></i>
                     <span><?php echo wasla_get_proper_author_name(); ?></span>
                 </div>
                 
                 <div class="article-meta-item">
+                    <i class="bi bi-calendar3"></i>
+                    <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('j F Y'); ?></time>
+                </div>
+
+                <div class="article-meta-item">
                     <i class="bi bi-clock"></i>
                     <span><?php echo wasla_get_reading_time(); ?> دقائق قراءة</span>
                 </div>
-                
+
                 <div class="article-meta-item">
                     <i class="bi bi-eye"></i>
                     <span><?php echo wasla_get_post_views(get_the_ID()); ?> مشاهدة</span>
                 </div>
+
             </div>
         </div>
     </section>

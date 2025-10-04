@@ -1076,10 +1076,40 @@
         font-size: 2.2rem;
     }
     
+    /* Article Meta - Two Rows Grid Layout */
     .article-meta {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        row-gap: 0.75rem;
+    }
+    
+    /* Row 1: Category badge spans right column only */
+    .article-meta-item.article-category {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    /* Row 2: Author (left) and Date (right) */
+    .article-meta-item:nth-child(3) { /* Author */
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .article-meta-item:nth-child(2) { /* Date */
+        grid-column: 2;
+        grid-row: 2;
+    }
+    
+    /* Row 3: Reading time (left) and Views (right) */
+    .article-meta-item:nth-child(4) { /* Reading time */
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    .article-meta-item:nth-child(5) { /* Views */
+        grid-column: 2;
+        grid-row: 3;
     }
     
     .article-content {
