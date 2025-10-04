@@ -4,6 +4,74 @@ All notable changes, bug fixes, and feature implementations for the Wasla Custom
 
 ---
 
+## 🗓️ **October 4, 2025** - Author Link and Navigation Improvements 🔗
+
+### ✅ **Fix 1: Author Name Clickable Link Added**
+**Issue**: Author name in article meta section was plain text with no link to author archive page.
+
+**Solution**:
+- Wrapped author name with link to author archive page using `get_author_posts_url()`
+- Added `.author-link` CSS class with hover effects
+- Link color matches article meta design (white with cream hover)
+- Smooth transition effect on hover
+
+**Impact**:
+- ✅ Users can click author name to see all articles by that author
+- ✅ Better UX and navigation throughout the site
+- ✅ Consistent with WordPress standards (author archives)
+- ✅ Smooth hover animation for visual feedback
+
+**Files Modified**:
+- `single.php` - Added author link with proper WordPress function
+- `css/single-article.css` - Added `.author-link` styling rules
+
+**Commit Message**: `Add clickable author link to article meta section with hover effect`
+
+**Status**: ✅ **RESOLVED** - October 4, 2025
+
+---
+
+### ✅ **Fix 2: Post Navigation Structure Improved**
+**Issue**: Navigation buttons showed only "المقال السابق" and "المقال التالي" with no article titles, making it unclear where the user is navigating to. The layout was also centered and cramped.
+
+**Solution**:
+- Added article title display (trimmed to 8 words) below direction label
+- Changed layout from centered to column flex layout
+- Previous post aligned to right, next post aligned to left
+- Larger padding (1.5rem) and min-height (80px) for better touch targets
+- Direction label now smaller (0.85rem) and in teal color
+- Article titles in gray (0.9rem) with proper spacing
+- Previous button shows: icon + label + title (right-aligned)
+- Next button shows: label + icon + title (left-aligned)
+
+**Visual Changes**:
+- **Before**: Centered buttons with only "المقال السابق" / "المقال التالي"
+- **After**: Well-structured buttons with direction + full article titles
+- Previous (right): ← المقال السابق | [Title of Previous Article]
+- Next (left): المقال التالي → | [Title of Next Article]
+
+**Impact**:
+- ✅ Users can see exactly which articles they're navigating to
+- ✅ Better UX with clear navigation context
+- ✅ Improved visual hierarchy (label small, title prominent)
+- ✅ Professional layout that matches modern blog standards
+- ✅ Larger touch targets for mobile usability
+- ✅ Consistent RTL-aligned design
+
+**Files Modified**:
+- `single.php` - Added article title display in navigation
+- `css/single-article.css` - Updated navigation layout and styling:
+  - `.nav-post` - Changed to column layout, flex-start alignment
+  - `.nav-direction` - Reduced size, changed color to teal
+  - `.nav-title` - Now visible (was hidden), proper styling
+  - `.nav-next` - Added left alignment for next button
+
+**Commit Message**: `Improve post navigation with article titles and better structure`
+
+**Status**: ✅ **RESOLVED** - October 4, 2025
+
+---
+
 ## 🗓️ **October 3, 2025** - Astra Color Variables Override 🎨
 
 ### ✅ **Override Astra Global Color Variables with Wasla Brand Colors**

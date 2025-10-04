@@ -48,7 +48,7 @@ get_header(); ?>
 
                 <div class="article-meta-item">
                     <i class="bi bi-person-circle"></i>
-                    <span><?php echo wasla_get_proper_author_name(); ?></span>
+                    <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" class="author-link"><?php echo wasla_get_proper_author_name(); ?></a>
                 </div>
                 
                 <div class="article-meta-item">
@@ -200,7 +200,11 @@ get_header(); ?>
                             <?php endif; ?>
                         </div>
                         <div class="author-info">
-                            <h3 class="author-name"><?php echo wasla_get_proper_author_name(); ?></h3>
+                            <h3 class="author-name">
+                                <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" class="author-name-link">
+                                    <?php echo wasla_get_proper_author_name(); ?>
+                                </a>
+                            </h3>
                             <p class="author-bio">
                                 <?php 
                                 $author_bio = get_the_author_meta('description');
@@ -231,10 +235,8 @@ get_header(); ?>
                             <?php if ($prev_post) : ?>
                                 <div class="nav-previous">
                                     <a href="<?php echo get_permalink($prev_post->ID); ?>" rel="prev" class="nav-post">
-                                        <div class="nav-direction">
-                                            <i class="bi bi-chevron-right"></i>
-                                            <span>المقال السابق</span>
-                                        </div>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <span>السابق</span>
                                     </a>
                                 </div>
                             <?php endif; ?>
@@ -242,10 +244,8 @@ get_header(); ?>
                             <?php if ($next_post) : ?>
                                 <div class="nav-next">
                                     <a href="<?php echo get_permalink($next_post->ID); ?>" rel="next" class="nav-post">
-                                        <div class="nav-direction">
-                                            <span>المقال التالي</span>
-                                            <i class="bi bi-chevron-left"></i>
-                                        </div>
+                                        <span>التالي</span>
+                                        <i class="bi bi-chevron-left"></i>
                                     </a>
                                 </div>
                             <?php endif; ?>
