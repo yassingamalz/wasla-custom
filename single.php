@@ -23,7 +23,7 @@ get_header(); ?>
             <nav class="article-breadcrumb" aria-label="Breadcrumb">
                 <a href="<?php echo home_url(); ?>">الرئيسية</a>
                 <span class="breadcrumb-separator">/</span>
-                <a href="<?php echo get_permalink(get_option('page_for_posts')) ?: home_url('/blog'); ?>">المدونة</a>
+                <a href="<?php echo home_url('/blog'); ?>">المدونة</a>
                 <?php 
                 $categories = get_the_category();
                 if (!empty($categories)) : ?>
